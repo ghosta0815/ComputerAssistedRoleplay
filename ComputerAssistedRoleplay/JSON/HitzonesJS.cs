@@ -18,7 +18,7 @@ namespace ComputerAssistedRoleplay.JSON
     ///     }
     /// ]
     /// </summary>
-    class HitzonesJS
+    public class HitzonesJS
     {
         public static string HitZoneJSPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"JSON\HitzonesJS.json");
         public Dictionary<string, int> HitZoneValuePairs { get; set; }

@@ -19,6 +19,8 @@ namespace ComputerAssistedRoleplay.Model
         /// </summary>
         public string RaceName { set; get; }
 
+        private static Random rand = new Random();
+
         /// <summary>
         /// Returns the Sum of all individual hitzoneranges.
         /// </summary>
@@ -37,19 +39,29 @@ namespace ComputerAssistedRoleplay.Model
         #endregion
 
         #region Constructors
-
         /// <summary>
         /// Creates the Bodyparts that can get hit based on the JSON Inputfile
         /// </summary>
         /// <param name="hitzoneJS">Hitzone JSON that define the Bodyparts</param>
-        public Hitzones(HitzonesJS jsHitzones)
+        public Hitzones(string name, HitzonesJS jsHitzones)
         {
+            RaceName = name;
+            Bodyparts = new List<SingleHitZone>();
+
             int toHitNumber = 0;
             foreach(KeyValuePair<string, int> jsHitzone in jsHitzones.HitZoneValuePairs)
             {
                 Bodyparts.Add(new SingleHitZone(jsHitzone.Key, toHitNumber + 1, toHitNumber + jsHitzone.Value));
                 toHitNumber = toHitNumber + jsHitzone.Value;
             }
+        }
+
+        /// <summary>
+        /// Creates an empty Hitzone object
+        /// </summary>
+        public Hitzones(string name)
+        {
+            RaceName = name;
         }
 
         #endregion
@@ -83,9 +95,8 @@ namespace ComputerAssistedRoleplay.Model
         /// Throws a dice and returns a bodypart that got hit
         /// </summary>
         /// <returns>Bodypart that got hit</returns>
-        public SingleHitZone determineHitzone()
+        public SingleHitZone randomizeHitzone()
         {
-            Random rand = new Random();
             int diceThrow = rand.Next(1, TotalZonePoints);
 
             foreach(SingleHitZone bodypart in Bodyparts)

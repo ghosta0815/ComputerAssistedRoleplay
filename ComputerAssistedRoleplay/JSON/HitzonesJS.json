@@ -1,3 +1,20 @@
 ﻿{
-
+  "Mensch": {
+    "HitZoneValuePairs": {
+    "Kopf": 10,
+    "Bauch": 30,
+    "Linker Fuss": 20,
+    "Rechter Fuss": 20,
+    "Brust": 40
+    }
+  },
+  "Zwerg": {
+    "HitZoneValuePairs": {
+    "Kopf": 30,
+    "Bauch": 40,
+    "Linker Fuss": 10,
+    "Rechter Fuss": 10,
+    "Brust": 30
+    }
+  }
 }
