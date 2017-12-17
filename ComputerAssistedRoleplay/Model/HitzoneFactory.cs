@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.IO;
-using ComputerAssistedRoleplay.JSON;
+using ComputerAssistedRoleplay.Model.JSON;
 using Newtonsoft.Json;
 
 
 namespace ComputerAssistedRoleplay.Model
 {
-    class HitzoneFactory
+    public class HitzoneFactory
     {
         #region Variables
         /// <summary>
@@ -27,14 +27,17 @@ namespace ComputerAssistedRoleplay.Model
         #endregion
 
         #region Constructors
+        /// <summary>
+        /// Creates a new instance of the Hitzone Factory
+        /// </summary>
         public HitzoneFactory()
         {
             RaceHitzones = new Dictionary<string, Hitzones>();
-            Dictionary<string, HitzonesJS> jsHitzones = loadHitzonesJSON();
+            HitzonesJS jsHitzones = loadHitzonesJSON();
 
-            foreach(KeyValuePair<string, HitzonesJS> jsHitzone in jsHitzones)
+            foreach(KeyValuePair<string, Dictionary<string, int>> hitzones in jsHitzones.HitZoneValuePairs)
             {
-                RaceHitzones.Add(jsHitzone.Key, new Hitzones(jsHitzone.Key, jsHitzone.Value));
+                RaceHitzones.Add(hitzones.Key, new Hitzones(hitzones.Key, hitzones.Value));
             }
         }
         #endregion
@@ -59,24 +62,25 @@ namespace ComputerAssistedRoleplay.Model
         }
 
         /// <summary>
+        /// Check if the Race is available
+        /// </summary>
+        /// <param name="race">Name of the Race</param>
+        /// <returns>true if race is available</returns>
+        public bool isZoneAvailable(string race)
+        {
+            return AvailableRaces.Contains(race);
+        }
+
+        /// <summary>
         /// Loads the available Hitzones from the JSON
         /// </summary>
         /// <returns>Hitzones</returns>
-        private Dictionary<string, HitzonesJS> loadHitzonesJSON()
+        private HitzonesJS loadHitzonesJSON()
         {
-            Dictionary<string, HitzonesJS> jsHitzones = null;
+            HitzonesJS jsHitzones = new HitzonesJS();
             try
             {
-                jsHitzones = JsonConvert.DeserializeObject<Dictionary<string, HitzonesJS>>(File.ReadAllText(HitzonesJS.HitZoneJSPath));
-                foreach(string key in jsHitzones.Keys)
-                {
-                    System.Diagnostics.Debug.WriteLine("Here is the Name: " + key);
-                    foreach(string hzJS in jsHitzones[key].HitZoneValuePairs.Keys)
-                    {
-                        System.Diagnostics.Debug.WriteLine("Here are the Bodyparts: " + hzJS);
-                    }
-                }
-
+                jsHitzones.HitZoneValuePairs = JsonConvert.DeserializeObject<Dictionary<string,Dictionary<string,int>>>(File.ReadAllText(HitzonesJS.HitZoneJSPath));
             }
             catch (Exception ex)
             {
@@ -88,6 +92,6 @@ namespace ComputerAssistedRoleplay.Model
         #endregion
 
         //JSON Writer:
-        //do not know yet...
+        //Takes the RaceHitzones and converts it to HitzonesJS class, which is converted to HitzonesJS.json
     }
 }

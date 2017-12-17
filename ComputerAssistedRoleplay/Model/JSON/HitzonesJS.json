@@ -1,0 +1,33 @@
+﻿{
+  "Mensch": {
+    "Kopf, Scheitel": 15,
+    "Kopf, Seite/Hinten": 45,
+    "Kopf, Gesicht": 60,
+    "Nacken": 2,
+    "Hals": 28,
+    "Schulter (rechts)": 45,
+    "Schulter (links)": 35,
+    "Oberarm (rechts)": 65,
+    "Oberarm (links)": 55,
+    "Unterarm (rechts)": 75,
+    "Unterarm (links)": 65,
+    "Hand (rechts)": 85,
+    "Hand (links)": 75,
+    "Brust": 68,
+    "Bauch": 108,
+    "Unterleib": 4,
+    "Oberschenkel (rechts)": 42,
+    "Oberschenkel (links)": 42,
+    "Unterschenkel (rechts)": 26,
+    "Unterschenkel (links)": 26,
+    "Fuß (rechts)": 17,
+    "Fuß (links)": 17
+  },
+  "Zwerg": {
+    "Kopf": 30,
+    "Bauch": 400,
+    "Linker Fuss": 10,
+    "Rechter Fuss": 10,
+    "Brust": 30
+  }
+}

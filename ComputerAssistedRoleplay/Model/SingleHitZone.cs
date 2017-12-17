@@ -9,7 +9,7 @@ namespace ComputerAssistedRoleplay.Model
     /// <summary>
     /// Class that defines a single Bodypart that can get hit with a range of Integers that define the hitchance
     /// </summary>
-    class SingleHitZone
+    public class SingleHitZone
     {
         /// <summary>
         /// Name of the Bodypart that gets hit

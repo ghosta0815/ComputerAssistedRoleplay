@@ -3,17 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ComputerAssistedRoleplay.JSON;
+using ComputerAssistedRoleplay.Model.JSON;
 
 namespace ComputerAssistedRoleplay.Model
 {
-    class Hitzones
+    public class Hitzones
     {
         #region Variables
         /// <summary>
         /// List of Bodyparts of a race that can get hit with the respective hitchance
         /// </summary>
         public List<SingleHitZone> Bodyparts { set; get; }
+
         /// <summary>
         /// Name of the race where this hitzones apply.
         /// </summary>
@@ -43,13 +44,13 @@ namespace ComputerAssistedRoleplay.Model
         /// Creates the Bodyparts that can get hit based on the JSON Inputfile
         /// </summary>
         /// <param name="hitzoneJS">Hitzone JSON that define the Bodyparts</param>
-        public Hitzones(string name, HitzonesJS jsHitzones)
+        public Hitzones(string name, Dictionary<string, int> hitzonesDict)
         {
             RaceName = name;
             Bodyparts = new List<SingleHitZone>();
 
             int toHitNumber = 0;
-            foreach(KeyValuePair<string, int> jsHitzone in jsHitzones.HitZoneValuePairs)
+            foreach(KeyValuePair<string, int> jsHitzone in hitzonesDict)
             {
                 Bodyparts.Add(new SingleHitZone(jsHitzone.Key, toHitNumber + 1, toHitNumber + jsHitzone.Value));
                 toHitNumber = toHitNumber + jsHitzone.Value;
@@ -63,7 +64,6 @@ namespace ComputerAssistedRoleplay.Model
         {
             RaceName = name;
         }
-
         #endregion
 
         /// <summary>
@@ -97,7 +97,7 @@ namespace ComputerAssistedRoleplay.Model
         /// <returns>Bodypart that got hit</returns>
         public SingleHitZone randomizeHitzone()
         {
-            int diceThrow = rand.Next(1, TotalZonePoints);
+            int diceThrow = rand.Next(1, TotalZonePoints+1);
 
             foreach(SingleHitZone bodypart in Bodyparts)
             {
