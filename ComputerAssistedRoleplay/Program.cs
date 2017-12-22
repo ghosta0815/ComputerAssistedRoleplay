@@ -17,13 +17,13 @@ namespace ComputerAssistedRoleplay
         [STAThread]
         static void Main()
         {
-            HitzoneView view = new HitzoneView();
+            MainWindowView view = new MainWindowView();
             view.Visible = false;
 
             CARCalculator calc = new CARCalculator();
 
-            HitzoneViewControl MVControl = new HitzoneViewControl(view, calc);
-            MVControl.LoadView();
+            MainWindowController MWControl = new MainWindowController(view, calc);
+            MWControl.LoadView();
 
             view.ShowDialog();
 

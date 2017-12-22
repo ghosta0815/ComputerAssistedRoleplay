@@ -16,7 +16,7 @@ namespace ComputerAssistedRoleplay.View
         /// <summary>
         /// The controller that handles the view
         /// </summary>
-        private HitzoneViewControl _controller;
+        private HitzoneViewController _controller;
 
         /// <summary>
         /// Name of the currently selected race
@@ -48,7 +48,7 @@ namespace ComputerAssistedRoleplay.View
         /// Sets the controller of the current view
         /// </summary>
         /// <param name="controller">Instance that controls this view</param>
-        public void SetController(HitzoneViewControl controller)
+        public void SetController(HitzoneViewController controller)
         {
             _controller = controller;
         }
@@ -68,9 +68,12 @@ namespace ComputerAssistedRoleplay.View
         /// <param name="name">Name of the Bodypart</param>
         /// <param name="minHit">Minimum dice value to hit the Bodypart</param>
         /// <param name="maxHit">Maximum dice value to hit the Bodypart</param>
-        public void HitzonesAddBodyPart(string name, int minHit, int maxHit)
+        public void HitzonesAddBodyParts(List<string> name, List<int> minHit, List<int> maxHit)
         {
-            this.HitzonesTable.Rows.Add(name, minHit, maxHit);
+            for(int i = 0; i < name.Count -1; i++)
+            {
+                this.HitzonesTable.Rows.Add(name[i], minHit[i], maxHit[i]);
+            }
         }
 
         /// <summary>

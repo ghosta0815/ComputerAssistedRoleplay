@@ -17,7 +17,7 @@ namespace ComputerAssistedRoleplay.Controller
         /// Sets the controller of the View
         /// </summary>
         /// <param name="controller">Instance of the controller that is operating the view</param>
-        void SetController(HitzoneViewControl controller);
+        void SetController(HitzoneViewController controller);
 
         #region Hitzones
         /// <summary>
@@ -31,7 +31,7 @@ namespace ComputerAssistedRoleplay.Controller
         /// <param name="name">Name of the Bodypart</param>
         /// <param name="minHit">Minimum dice value to hit</param>
         /// <param name="maxHit">Maximum dice value to hit</param>
-        void HitzonesAddBodyPart(string name, int minHit, int maxHit);
+        void HitzonesAddBodyParts(List<string> name, List<int> minHit, List<int> maxHit);
 
         /// <summary>
         /// Sets the available races

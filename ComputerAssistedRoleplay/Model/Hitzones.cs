@@ -66,6 +66,8 @@ namespace ComputerAssistedRoleplay.Model
         }
         #endregion
 
+        #region Methods
+
         /// <summary>
         /// Returns the hitchance of a single Zone
         /// </summary>
@@ -110,5 +112,51 @@ namespace ComputerAssistedRoleplay.Model
             System.Diagnostics.Debug.WriteLine("This should never appear: A Hitzone was randomly selected that does not exist");
             return new SingleHitZone("none", 0, 0);
         }
+
+        /// <summary>
+        /// Returns all Bodypart names in the Collection
+        /// </summary>
+        /// <returns>List of Bodypartnames</returns>
+        public List<string> getHitzoneNames()
+        {
+            List<string> hitZoneNames = new List<string>();
+            foreach(SingleHitZone bodyPart in Bodyparts)
+            {
+                hitZoneNames.Add(bodyPart.ZoneName);
+            }
+
+            return hitZoneNames;
+        }
+
+        /// <summary>
+        /// Returns all Bodypart starting inidces
+        /// </summary>
+        /// <returns>List of Bodypart starting indices</returns>
+        public List<int> getHitzoneStartIndices()
+        {
+            List<int> hitZoneStartIndices = new List<int>();
+            foreach (SingleHitZone bodyPart in Bodyparts)
+            {
+                hitZoneStartIndices.Add(bodyPart.ZoneIndexStart);
+            }
+
+            return hitZoneStartIndices;
+        }
+
+        /// <summary>
+        /// Returns all Bodypart ending indices
+        /// </summary>
+        /// <returns>List of bodypart ending indices</returns>
+        public List<int> getHitzoneEndIndices()
+        {
+            List<int> hitZoneEndIndices = new List<int>();
+            foreach (SingleHitZone bodyPart in Bodyparts)
+            {
+                hitZoneEndIndices.Add(bodyPart.ZoneIndexEnd);
+            }
+
+            return hitZoneEndIndices;
+        }
+        #endregion
     }
 }

@@ -7,7 +7,7 @@ using ComputerAssistedRoleplay.Model;
 
 namespace ComputerAssistedRoleplay.Controller
 {
-    public class HitzoneViewControl
+    public class HitzoneViewController
     {
         #region Variables
         /// <summary>
@@ -26,11 +26,13 @@ namespace ComputerAssistedRoleplay.Controller
         /// </summary>
         /// <param name="view">View interface it is linked to</param>
         /// <param name="calculator">Main Calculator class</param>
-        public HitzoneViewControl(IHitzoneView view, CARCalculator calculator)
+        public HitzoneViewController(IHitzoneView view, HitzoneFactory hitFab)
         {
             _view = view;
-            _hitFab = calculator.HitFab;
+            _hitFab = hitFab;
             view.SetController(this);
+
+            this.LoadView();
         }
         #endregion
 
@@ -44,10 +46,7 @@ namespace ComputerAssistedRoleplay.Controller
             Hitzones defaultHitZone = _hitFab.getZonesFor(defaultRace);
 
             _view.HitzonesClearGrid();
-            foreach(SingleHitZone bodyPart in defaultHitZone.Bodyparts)
-            {
-                _view.HitzonesAddBodyPart(bodyPart.ZoneName, bodyPart.ZoneIndexStart, bodyPart.ZoneIndexEnd);
-            }
+            _view.HitzonesAddBodyParts(defaultHitZone.getHitzoneNames(), defaultHitZone.getHitzoneStartIndices(), defaultHitZone.getHitzoneEndIndices());
 
             _view.HitzonesSetAvailableRaces(_hitFab.AvailableRaces);
             _view.selectedRace = defaultRace;
@@ -61,10 +60,8 @@ namespace ComputerAssistedRoleplay.Controller
         {
             _view.HitzonesClearGrid();
             Hitzones newHitZone = _hitFab.getZonesFor(newRace);
-            foreach (SingleHitZone bodyPart in newHitZone.Bodyparts)
-            {
-                _view.HitzonesAddBodyPart(bodyPart.ZoneName, bodyPart.ZoneIndexStart, bodyPart.ZoneIndexEnd);
-            }
+
+            _view.HitzonesAddBodyParts(newHitZone.getHitzoneNames(), newHitZone.getHitzoneStartIndices(), newHitZone.getHitzoneEndIndices());
         }
 
         /// <summary>
