@@ -31,6 +31,7 @@ namespace ComputerAssistedRoleplay.Controller
             _view = view;
             _carCalc = calculator;
             view.SetController(this);
+            calculator.CombatLog.Subscribe(view);
         }
         #endregion
 

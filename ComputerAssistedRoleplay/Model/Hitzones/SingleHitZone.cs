@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ComputerAssistedRoleplay.Model
+namespace ComputerAssistedRoleplay.Model.Hitzone
 {
     /// <summary>
     /// Class that defines a single Bodypart that can get hit with a range of Integers that define the hitchance

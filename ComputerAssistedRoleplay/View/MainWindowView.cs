@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ComputerAssistedRoleplay.Controller;
+using ComputerAssistedRoleplay.Model.Logging;
 
 namespace ComputerAssistedRoleplay.View
 {
@@ -38,6 +39,11 @@ namespace ComputerAssistedRoleplay.View
         public void SetController(MainWindowController controller)
         {
             _controller = controller;
+        }
+
+        public void textChanged(ILog log, LogEventArgs e)
+        {
+            this.LogTextBox.AppendText(e.NewLogEntry + "\r\n");
         }
         #endregion
 

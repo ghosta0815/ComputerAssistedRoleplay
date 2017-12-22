@@ -73,16 +73,18 @@
     <Compile Include="Controller\IMainWindowView.cs" />
     <Compile Include="Controller\MainWindowController.cs" />
     <Compile Include="Model\CARCalculator.cs" />
+    <Compile Include="Model\Logging\Log.cs" />
+    <Compile Include="Tests\LogTest.cs" />
     <Compile Include="View\HitzoneView.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\HitzoneView.Designer.cs">
       <DependentUpon>HitzoneView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\HitzoneFactory.cs" />
-    <Compile Include="Model\Hitzones.cs" />
+    <Compile Include="Model\Hitzones\HitzoneFactory.cs" />
+    <Compile Include="Model\Hitzones\Hitzones.cs" />
     <Compile Include="Model\CharacterSheet.cs" />
-    <Compile Include="Model\SingleHitZone.cs" />
+    <Compile Include="Model\Hitzones\SingleHitZone.cs" />
     <Compile Include="Model\JSON\HitzonesJS.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Tests\HitzoneFactoryTest.cs" />

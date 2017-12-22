@@ -1,6 +1,6 @@
 ﻿using System;
 using NUnit.Framework;
-using ComputerAssistedRoleplay.Model;
+using ComputerAssistedRoleplay.Model.Hitzone;
 
 namespace ComputerAssistedRoleplay.Tests
 {
@@ -12,7 +12,8 @@ namespace ComputerAssistedRoleplay.Tests
         [OneTimeSetUp]
         public void InitHitzone()
         {
-            HitFab = new HitzoneFactory();
+            Random rand = new Random();
+            HitFab = new HitzoneFactory(rand, new Model.Logging.Log());
         }
 
         [TestCase]

@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.IO;
 using ComputerAssistedRoleplay.Model.JSON;
+using ComputerAssistedRoleplay.Model.Logging;
 using Newtonsoft.Json;
 
 
-namespace ComputerAssistedRoleplay.Model
+namespace ComputerAssistedRoleplay.Model.Hitzone
 {
     public class HitzoneFactory
     {
@@ -24,20 +25,25 @@ namespace ComputerAssistedRoleplay.Model
             get { return RaceHitzones.Keys.ToList(); }
 
         }
+
+        private Random Rand { get; set; }
+        private Log CombatLog { get; set; }
         #endregion
 
         #region Constructors
         /// <summary>
         /// Creates a new instance of the Hitzone Factory
         /// </summary>
-        public HitzoneFactory()
+        public HitzoneFactory(Random rand, Log log)
         {
+            Rand = rand;
+            CombatLog = log;
             RaceHitzones = new Dictionary<string, Hitzones>();
             HitzonesJS jsHitzones = loadHitzonesJSON();
 
             foreach(KeyValuePair<string, Dictionary<string, int>> hitzones in jsHitzones.HitZoneValuePairs)
             {
-                RaceHitzones.Add(hitzones.Key, new Hitzones(hitzones.Key, hitzones.Value));
+                RaceHitzones.Add(hitzones.Key, new Hitzones(hitzones.Key, hitzones.Value, Rand, CombatLog));
             }
         }
         #endregion
@@ -57,7 +63,7 @@ namespace ComputerAssistedRoleplay.Model
             else
             {
                 System.Diagnostics.Debug.WriteLine("Hitzones for Race {0} not found", race);
-                return new Hitzones(race);
+                return new Hitzones(race, Rand, CombatLog);
             }
         }
 

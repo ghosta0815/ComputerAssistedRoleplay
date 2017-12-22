@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ComputerAssistedRoleplay.Model.Logging;
 
 namespace ComputerAssistedRoleplay.Controller
 {
-    public interface IMainWindowView
+    public interface IMainWindowView : ILogObserver
     {
         /// <summary>
         /// Sets the controller of the View

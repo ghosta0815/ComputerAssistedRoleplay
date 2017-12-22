@@ -1,22 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using ComputerAssistedRoleplay.Model.Hitzone;
 
 namespace ComputerAssistedRoleplay.Model
 {
     public class CARCalculator
     {
-        public HitzoneFactory HitFab = new HitzoneFactory();
-        private Random rand = new Random();
+        public HitzoneFactory HitFab { get; set; }
+        private Random Rand { get; set; }
 
         public CharacterSheet PlayerCharacter { get; }
         public int Round { get; set; }
 
+        public Logging.Log CombatLog { get; set; }
+
         #region Constructors
         public CARCalculator()
         {
+            Rand = new Random();
+            CombatLog = new Logging.Log();
+            HitFab = new HitzoneFactory(Rand, CombatLog);
+
             PlayerCharacter = new CharacterSheet(HitFab.getZonesFor(HitFab.AvailableRaces[0]));
             Round = 0;
 
@@ -26,7 +29,7 @@ namespace ComputerAssistedRoleplay.Model
         #region Methods for Random Numbers
         public int throwDice(int maxPoints)
         {
-            return rand.Next(maxPoints+1);
+            return Rand.Next(maxPoints+1);
         }
         #endregion
     }

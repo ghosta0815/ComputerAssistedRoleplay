@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ComputerAssistedRoleplay.Model.JSON;
+using ComputerAssistedRoleplay.Model.Logging;
 
-namespace ComputerAssistedRoleplay.Model
+namespace ComputerAssistedRoleplay.Model.Hitzone
 {
     public class Hitzones
     {
@@ -20,7 +21,8 @@ namespace ComputerAssistedRoleplay.Model
         /// </summary>
         public string RaceName { set; get; }
 
-        private static Random rand = new Random();
+        private Random Rand { get; set; }
+        public Log CombatLog { get; set; }
 
         /// <summary>
         /// Returns the Sum of all individual hitzoneranges.
@@ -44,10 +46,12 @@ namespace ComputerAssistedRoleplay.Model
         /// Creates the Bodyparts that can get hit based on the JSON Inputfile
         /// </summary>
         /// <param name="hitzoneJS">Hitzone JSON that define the Bodyparts</param>
-        public Hitzones(string name, Dictionary<string, int> hitzonesDict)
+        public Hitzones(string name, Dictionary<string, int> hitzonesDict, Random rand, Log log)
         {
             RaceName = name;
             Bodyparts = new List<SingleHitZone>();
+            Rand = rand;
+            CombatLog = log;
 
             int toHitNumber = 0;
             foreach(KeyValuePair<string, int> jsHitzone in hitzonesDict)
@@ -60,9 +64,11 @@ namespace ComputerAssistedRoleplay.Model
         /// <summary>
         /// Creates an empty Hitzone object
         /// </summary>
-        public Hitzones(string name)
+        public Hitzones(string name, Random rand, Log log)
         {
+            Rand = rand;
             RaceName = name;
+            CombatLog = log;
         }
         #endregion
 
@@ -99,12 +105,13 @@ namespace ComputerAssistedRoleplay.Model
         /// <returns>Bodypart that got hit</returns>
         public SingleHitZone randomizeHitzone()
         {
-            int diceThrow = rand.Next(1, TotalZonePoints+1);
+            int diceThrow = Rand.Next(1, TotalZonePoints+1);
 
             foreach(SingleHitZone bodypart in Bodyparts)
             {
                 if(bodypart.isHit(diceThrow))
                 {
+                    CombatLog.Append("Du triffst " + RaceName + ": " + bodypart.ZoneName + " mit " + diceThrow + " auf " + bodypart.ZoneIndexStart + " - " + bodypart.ZoneIndexEnd);
                     return bodypart;
                 }
             }
