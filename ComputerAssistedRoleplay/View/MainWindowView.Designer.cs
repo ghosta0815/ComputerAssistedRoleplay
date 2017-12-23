@@ -30,6 +30,7 @@
         {
             this.HitZoneWindowCmd = new System.Windows.Forms.Button();
             this.LogTextBox = new System.Windows.Forms.TextBox();
+            this.ClearLogCmd = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // HitZoneWindowCmd
@@ -54,11 +55,22 @@
             this.LogTextBox.Size = new System.Drawing.Size(410, 364);
             this.LogTextBox.TabIndex = 1;
             // 
+            // ClearLogCmd
+            // 
+            this.ClearLogCmd.Location = new System.Drawing.Point(428, 353);
+            this.ClearLogCmd.Name = "ClearLogCmd";
+            this.ClearLogCmd.Size = new System.Drawing.Size(75, 23);
+            this.ClearLogCmd.TabIndex = 2;
+            this.ClearLogCmd.Text = "Log leeren";
+            this.ClearLogCmd.UseVisualStyleBackColor = true;
+            this.ClearLogCmd.Click += new System.EventHandler(this.ClearLogCmd_Click);
+            // 
             // MainWindowView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(618, 388);
+            this.Controls.Add(this.ClearLogCmd);
             this.Controls.Add(this.LogTextBox);
             this.Controls.Add(this.HitZoneWindowCmd);
             this.Name = "MainWindowView";
@@ -72,5 +84,6 @@
 
         private System.Windows.Forms.Button HitZoneWindowCmd;
         private System.Windows.Forms.TextBox LogTextBox;
+        private System.Windows.Forms.Button ClearLogCmd;
     }
 }

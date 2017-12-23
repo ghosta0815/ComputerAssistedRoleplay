@@ -56,7 +56,7 @@ namespace ComputerAssistedRoleplay.Tests
         {
             string testString = "Hello World";
 
-            TestLog.textChanged += TestLog_textChanged;
+            TestLog.textHandler += TestLog_textChanged;
             TestLog.Append(testString);
 
             Assert.AreEqual(testString, eventString);

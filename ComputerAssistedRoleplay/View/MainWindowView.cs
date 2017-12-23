@@ -41,9 +41,21 @@ namespace ComputerAssistedRoleplay.View
             _controller = controller;
         }
 
-        public void textChanged(ILog log, LogEventArgs e)
+        /// <summary>
+        /// ILogObserver function when a Log is Changing the Text
+        /// </summary>
+        /// <param name="log"></param>
+        /// <param name="e"></param>
+        public void logTextChanged(ILog log, LogEventArgs e)
         {
-            this.LogTextBox.AppendText(e.NewLogEntry + "\r\n");
+            if (e.LogCleared)
+            {
+                this.LogTextBox.Text = "";
+            }
+            else
+            {
+                this.LogTextBox.AppendText(e.NewLogEntry + "\r\n");
+            }
         }
         #endregion
 
@@ -62,6 +74,16 @@ namespace ComputerAssistedRoleplay.View
 
             this.Enabled = true;
             hitView.Show(this);
+        }
+
+        /// <summary>
+        /// Clears the Log from any entries
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ClearLogCmd_Click(object sender, EventArgs e)
+        {
+            _controller.clearLog();
         }
         #endregion
     }

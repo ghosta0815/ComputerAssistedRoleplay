@@ -19,6 +19,7 @@ namespace ComputerAssistedRoleplay.Model.Logging
     /// </summary>
     public class LogEventArgs : EventArgs
     {
+        public bool LogCleared;
         /// <summary>
         /// The string that was just added to the Log entry;
         /// </summary>
@@ -33,8 +34,9 @@ namespace ComputerAssistedRoleplay.Model.Logging
         /// </summary>
         /// <param name="logText">The full Text of the Log</param>
         /// <param name="newLog">The new Log entry that was added</param>
-        public LogEventArgs(string logText, string newLog)
+        public LogEventArgs(string logText, string newLog, bool logCleared)
         {
+            LogCleared = logCleared;
             LogText = logText;
             NewLogEntry = newLog;
         }
@@ -45,7 +47,7 @@ namespace ComputerAssistedRoleplay.Model.Logging
     /// </summary>
     public interface ILogObserver
     {
-        void textChanged(ILog log, LogEventArgs e);
+        void logTextChanged(ILog log, LogEventArgs e);
     }
 
     /// <summary>
@@ -87,9 +89,9 @@ namespace ComputerAssistedRoleplay.Model.Logging
         public void Append(string textToAppend)
         {
             Text = Text + textToAppend + "\r\n";
-            if (textChanged != null)
+            if (textHandler != null)
             {
-                textChanged.Invoke(this, new LogEventArgs(Text, textToAppend));
+                textHandler.Invoke(this, new LogEventArgs(Text, textToAppend, false));
             }
         }
 
@@ -99,6 +101,10 @@ namespace ComputerAssistedRoleplay.Model.Logging
         public void Clear()
         {
             Text = "";
+            if (textHandler != null)
+            {
+                textHandler.Invoke(this, new LogEventArgs("", "", true));
+            }
         } 
         #endregion
 
@@ -106,7 +112,7 @@ namespace ComputerAssistedRoleplay.Model.Logging
         /// <summary>
         /// Occurs when the Text of the log changes.
         /// </summary>
-        public event LogHandler<Log> textChanged;
+        public event LogHandler<Log> textHandler;
 
         /// <summary>
         /// Subscribe if you want to get notified about changes to the Log
@@ -114,7 +120,7 @@ namespace ComputerAssistedRoleplay.Model.Logging
         /// <param name="ilo"></param>
         public void Subscribe(ILogObserver ilo)
         {
-            textChanged += new LogHandler<Log>(ilo.textChanged);
+            textHandler += new LogHandler<Log>(ilo.logTextChanged);
         }
 
         /// <summary>
@@ -123,7 +129,7 @@ namespace ComputerAssistedRoleplay.Model.Logging
         /// <param name="ilo"></param>
         public void UnSubscribe(ILogObserver ilo)
         {
-            textChanged -= new LogHandler<Log>(ilo.textChanged);
+            textHandler -= new LogHandler<Log>(ilo.logTextChanged);
         }
         #endregion
     }

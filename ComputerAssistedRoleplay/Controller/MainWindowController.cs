@@ -52,6 +52,14 @@ namespace ComputerAssistedRoleplay.Controller
         {
             HitzoneViewController HZControl = new HitzoneViewController(hzView, _carCalc.HitFab);
         }
+
+        /// <summary>
+        /// Empties the CombatLog
+        /// </summary>
+        public void clearLog()
+        {
+            _carCalc.CombatLog.Clear();
+        }
         #endregion
     }
 }
