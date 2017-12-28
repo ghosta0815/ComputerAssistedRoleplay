@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>4</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>956</x>
+      <y>428</y>
+      <w>172</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>TrefferzonenClaculator.cs
+-
+Klasse in der alle Trefferzoneninfos abgelegt sind
+-
+private hitJson readHitZoneJson()
+{ Liest Trefferzonen.json ein }
+
+public string calculateHitzone(string race)
+{ Gibt Trefferzone zurück }
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1148</x>
+      <y>444</y>
+      <w>100</w>
+      <h>20</h>
+    </coordinates>
+    <panel_attributes>Trefferzonen.cs
+-
+Das Objekt zum Trefferzonen JSON</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>964</x>
+      <y>492</y>
+      <w>204</w>
+      <h>44</h>
+    </coordinates>
+    <panel_attributes>Trefferzonen.json
+-
+Trefferzonen nach z.B. Rasse:
+{
+Mensch:{["Kopf,Scheitel":15, "Kopf,Seite/Hinten":35, "Kopf, Gesicht":60,...]},
+Zwerg:{["Kopf,Scheitel":40, "Kopf,Seite/Hinten":45, "Kopf, Gesicht":50,...]},...
+}
+
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1124</x>
+      <y>452</y>
+      <w>32</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;60.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>568</x>
+      <y>344</y>
+      <w>156</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>GUI (View)
+-
+Microsoft Visual Studio in der Community Edition.
+Einfache GUI im WPF Designer zusammenklicken.
+-
+Einfach die Events an einzelne Funktionsaufrufe weiterleiten
+in denen die BErechnungen gemacht werden.
+Ausgabe erfolgt dann im Hauptfenster im Info-Fenster
+
+
+bg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>568</x>
+      <y>300</y>
+      <w>136</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>SubGUIs (Views)
+-
+Werden von der Main View aufgerufen.
+Hier werden Einstellungen im Hintergrund gemacht.
+Für e.g. Spieler oder so...
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>700</x>
+      <y>316</y>
+      <w>48</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;100.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>740</x>
+      <y>300</y>
+      <w>232</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>GUI: Main (Views)
+-
+HauptGUI:
+Info-Fenster (Scrollable Textbox) wer was getroffen hat, wo Schaden Absorbiert wurde,
+was hat die Rüstung gemacht, etc.
+RundenController
+Einstellungen Spieler (ggf. in Subfenster
+Einstellungen Gegner 1 (ggf. in Subfenster)
+Einstellungen Gegner 2 (ggf. in Subfenster)
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>820</x>
+      <y>356</y>
+      <w>52</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+Click-Events
+Funktionsaufrufe
+calculateRound()</panel_attributes>
+    <additional_attributes>10.0;190.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1148</x>
+      <y>560</y>
+      <w>196</w>
+      <h>116</h>
+    </coordinates>
+    <panel_attributes>Daten (Model)
+-
+JSON
+In den json files einfach alles an Werten und Informationen
+abspeichern. Beim Start der Applikation werden die JSON files 
+ausgelesen und in C# Objekte überführt, die zur Laufzeit
+zur Verfügung stehen
+-
+Das Hier dient nur als Beispiel für die Trefferzonen.
+Weitere JSONs:
+-Waffen
+-Rüstungen
+-Gegner?
+-
+Informationen zur Laufzeit im Rest des Modells abspeichern
+e.g. Spielerstatus, Gegnerstatus, Umgebungseffekte?
+Bei geänderten Datenstand --&gt; Event des Updates auslösen
+
+bg=blue
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>560</x>
+      <y>436</y>
+      <w>332</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>MainCalculator.cs
+-
+Beinhaltet alle Klassen, die Daten beinhalten:
+e.g. TrefferzonenCalculator.cs
+S
+-
+Hauptfunktion:
+public string calculateRound()
+{
+Berechnet die Kampfrunde
+Liefert den String, der in der Scrollable Textbox angezeigt wird zurück
+Brauche mehr Infos, wie die Kampfrunde ablaufen soll.
+}
+
+-
+Subfunktionen:
+* Die zur Berechnung der Kampfrunde gebraucht werden...
+* Update des PlayerStatius/EnemySTatus/Umgebung
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>888</x>
+      <y>452</y>
+      <w>76</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;120.0;170.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>944</x>
+      <y>676</y>
+      <w>172</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>PlayerStatus.cs
+-
+Infos über den Spieler
+Waffe, Rüstung, Hitpoints, Blutverlust,
+etc.
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>944</x>
+      <y>740</y>
+      <w>172</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>EnemyStatus.cs
+-
+Infos über den Spieler
+Waffe, Rüstung, Hitpoints, Blutverlust,
+Position?
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>860</x>
+      <y>572</y>
+      <w>92</w>
+      <h>124</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;210.0;290.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>824</x>
+      <y>572</y>
+      <w>128</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;300.0;430.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>944</x>
+      <y>804</y>
+      <w>172</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>Umgebung.cs
+-
+Sicht
+Untergrund
+Enge
+Ablekung
+etc.</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>784</x>
+      <y>572</y>
+      <w>168</w>
+      <h>248</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;400.0;600.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>964</x>
+      <y>552</y>
+      <w>172</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>Waffen.cs/Armor.cs
+-
+public Weapon getWeapon(string)
+
+priate JSON readJSON()
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1072</x>
+      <y>480</y>
+      <w>12</w>
+      <h>20</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>932</x>
+      <y>604</y>
+      <w>80</w>
+      <h>20</h>
+    </coordinates>
+    <panel_attributes>Weapons.json/Armors.json
+bg=yellow
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1032</x>
+      <y>604</y>
+      <w>100</w>
+      <h>16</h>
+    </coordinates>
+    <panel_attributes>Weapon.cs/Armor.cs
+-</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>984</x>
+      <y>584</y>
+      <w>12</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1064</x>
+      <y>584</y>
+      <w>12</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>888</x>
+      <y>540</y>
+      <w>84</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;190.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1112</x>
+      <y>616</y>
+      <w>24</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;380.0;40.0;380.0;40.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1112</x>
+      <y>616</y>
+      <w>20</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;240.0;30.0;240.0;30.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>556</x>
+      <y>584</y>
+      <w>196</w>
+      <h>116</h>
+    </coordinates>
+    <panel_attributes>Controller
+-
+Führt die Berechnungen durch, die für die Kampfrunde gebraucht werden
+Enthält die Logik des Systems, Ändert die Daten im Modell.
+
+
+bg=green
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

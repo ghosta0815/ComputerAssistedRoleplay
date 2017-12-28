@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>8</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>432</x>
+      <y>424</y>
+      <w>344</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>WeaponsJS.cs
+-
+public Dictionary&lt;String, WeaponJS&gt;
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>64</x>
+      <y>496</y>
+      <w>464</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>Weapons.json/Armors.json
+bg=yellow
+--
+{"Hammer": {"Cut":0 , "Pierce": 0, "Bash":10, "Statuseffects": {"CanCrush"}},
+"Flail": {"Cut":1, "Pierce": 0, "Bash": 14, "Statuseffects": {"CanHitSelf", "CanCrush"}},
+"Messer": "{"Cut":5, "Pierce": 8, "Bash": 1, "Statuseffects": {"CanCausBleed"}},
+...}
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>568</x>
+      <y>488</y>
+      <w>176</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>WeaponJS.cs
+-
+public int Cut
+public int Pierce
+public int Bash
+public List&lt;string&gt; statuseffects;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>472</x>
+      <y>456</y>
+      <w>24</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>632</x>
+      <y>456</y>
+      <w>24</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>152</x>
+      <y>264</y>
+      <w>248</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>WeaponFactory.cs
+-
+Dictionary &lt;String, Weapon&gt; weaponrack
+public Weapon getWeapon(string)
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>376</x>
+      <y>336</y>
+      <w>72</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;70.0;130.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>440</x>
+      <y>264</y>
+      <w>208</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>Weapon.cs
+-
+public int Cut
+public int Pierce
+public int Bash
+public List&lt;string&gt;statuseffects
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>392</x>
+      <y>304</y>
+      <w>64</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>60.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+</diagram>

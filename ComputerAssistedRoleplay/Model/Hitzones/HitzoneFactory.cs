@@ -6,7 +6,6 @@ using ComputerAssistedRoleplay.Model.JSON;
 using ComputerAssistedRoleplay.Model.Logging;
 using Newtonsoft.Json;
 
-
 namespace ComputerAssistedRoleplay.Model.Hitzone
 {
     public class HitzoneFactory
@@ -16,7 +15,6 @@ namespace ComputerAssistedRoleplay.Model.Hitzone
         /// Available Hitzones for the races
         /// </summary>
         private Dictionary<string, Hitzones> RaceHitzones { get; set; }
-
         /// <summary>
         /// The list of available races
         /// </summary>
@@ -25,8 +23,13 @@ namespace ComputerAssistedRoleplay.Model.Hitzone
             get { return RaceHitzones.Keys.ToList(); }
 
         }
-
+        /// <summary>
+        /// Random Number Generator of the application
+        /// </summary>
         private Random Rand { get; set; }
+        /// <summary>
+        /// The Combat Log of the application
+        /// </summary>
         private Log CombatLog { get; set; }
         #endregion
 
@@ -41,7 +44,7 @@ namespace ComputerAssistedRoleplay.Model.Hitzone
             RaceHitzones = new Dictionary<string, Hitzones>();
             HitzonesJS jsHitzones = loadHitzonesJSON();
 
-            foreach(KeyValuePair<string, Dictionary<string, int>> hitzones in jsHitzones.HitZoneValuePairs)
+            foreach(KeyValuePair<string, Dictionary<string, int>> hitzones in jsHitzones.HitZoneIDValuePairs)
             {
                 RaceHitzones.Add(hitzones.Key, new Hitzones(hitzones.Key, hitzones.Value, Rand, CombatLog));
             }
@@ -86,7 +89,7 @@ namespace ComputerAssistedRoleplay.Model.Hitzone
             HitzonesJS jsHitzones = new HitzonesJS();
             try
             {
-                jsHitzones.HitZoneValuePairs = JsonConvert.DeserializeObject<Dictionary<string,Dictionary<string,int>>>(File.ReadAllText(HitzonesJS.HitZoneJSPath));
+                jsHitzones.HitZoneIDValuePairs = JsonConvert.DeserializeObject<Dictionary<string,Dictionary<string,int>>>(File.ReadAllText(HitzonesJS.HitZoneJSPath));
             }
             catch (Exception ex)
             {

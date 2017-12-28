@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ComputerAssistedRoleplay.Model.JSON
 {
@@ -33,6 +30,6 @@ namespace ComputerAssistedRoleplay.Model.JSON
         /// <summary>
         /// Contains the Hitzonevaluepairs that can be converted to Hitzone objects
         /// </summary>
-        public Dictionary<string, Dictionary<string, int>> HitZoneValuePairs { get; set; }
+        public Dictionary<string, Dictionary<string, int>> HitZoneIDValuePairs { get; set; }
     }
 }

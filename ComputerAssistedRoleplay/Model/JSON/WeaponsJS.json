@@ -1,0 +1,21 @@
+﻿{
+  "Hammer": {
+    "Name": "Hammer",
+    "PierceDamage": 0,
+    "BashDamage": 10,
+    "CutDamage": 1,
+    "StatusEffects": [
+      "CanBreakBones",
+      "CanCreateUnconsciousness"
+    ]
+  },
+  "Knife": {
+    "Name": "Messer",
+    "PierceDamage": 6,
+    "BashDamage": 2,
+    "CutDamage": 4,
+    "StatusEffects": [
+      "CanBleed"
+    ]
+  }
+}

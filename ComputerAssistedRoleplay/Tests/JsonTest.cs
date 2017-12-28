@@ -16,6 +16,7 @@ namespace ProximaB.UnitTests
         [TestCase]
         public void HitzonesJSPathCorrect()
         {
+            TestContext.WriteLine(HitzonesJS.HitZoneJSPath);
             Assert.True(File.Exists(HitzonesJS.HitZoneJSPath));
         }
 
@@ -33,20 +34,66 @@ namespace ProximaB.UnitTests
             }
             catch (JsonReaderException jex)
             {
-                System.Diagnostics.Debug.WriteLine(jex.Message.ToString());
+                TestContext.WriteLine(jex.Message.ToString());
                 isValidJson = false;
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine(ex.Message.ToString());
+                TestContext.WriteLine(ex.Message.ToString());
                 isNoOtherExecption = false;
             }
 
-            Assert.True(isValidJson);
-            Assert.True(isNoOtherExecption);
+            Assert.Multiple(() =>
+            {
+                Assert.True(isValidJson);
+                Assert.True(isNoOtherExecption);
+            });
+
 
         }
         #endregion
 
+        #region WeaponsJS.json
+        /// <summary>
+        /// Tests if the path in the WeaponsJS directs to a file
+        /// </summary>
+        [TestCase]
+        public void WeaponsJSPathCorrect()
+        {
+            TestContext.WriteLine(WeaponsJS.WeaponsJSPath);
+            Assert.True(File.Exists(WeaponsJS.WeaponsJSPath));
+        }
+
+        /// <summary>
+        /// Tests if WeaponsJS is a valid Json file by parsing it;
+        /// </summary>
+        [TestCase]
+        public void WeaponsJSIsValidJson()
+        {
+            bool isValidJson = true;
+            bool isNoOtherExecption = true;
+            try
+            {
+                JsonConvert.DeserializeObject<dynamic>(File.ReadAllText(WeaponsJS.WeaponsJSPath));
+            }
+            catch (JsonReaderException jex)
+            {
+                
+                TestContext.WriteLine(jex.Message.ToString());
+                isValidJson = false;
+            }
+            catch (Exception ex)
+            {
+                TestContext.WriteLine(ex.Message.ToString());
+                isNoOtherExecption = false;
+            }
+
+            Assert.Multiple(() =>
+            {
+                Assert.True(isValidJson);
+                Assert.True(isNoOtherExecption);
+            });
+        }
+        #endregion
     }
 }

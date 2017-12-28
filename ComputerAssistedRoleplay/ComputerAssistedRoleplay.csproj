@@ -73,7 +73,10 @@
     <Compile Include="Controller\IMainWindowView.cs" />
     <Compile Include="Controller\MainWindowController.cs" />
     <Compile Include="Model\CARCalculator.cs" />
+    <Compile Include="Model\Weapons\WeaponsFactory.cs" />
+    <Compile Include="Model\JSON\WeaponsJS.cs" />
     <Compile Include="Model\Logging\Log.cs" />
+    <Compile Include="Model\Weapons\Weapon.cs" />
     <Compile Include="Tests\LogTest.cs" />
     <Compile Include="View\HitzoneView.cs">
       <SubType>Form</SubType>
@@ -114,6 +117,9 @@
     <EmbeddedResource Include="View\MainWindowView.resx">
       <DependentUpon>MainWindowView.cs</DependentUpon>
     </EmbeddedResource>
+    <Content Include="Model\JSON\WeaponsJS.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
