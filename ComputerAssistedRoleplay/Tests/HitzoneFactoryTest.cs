@@ -26,6 +26,11 @@ namespace ComputerAssistedRoleplay.Tests
         public void ContainsRaces()
         {
             Assert.GreaterOrEqual(HitFab.AvailableRaces.Count, 1);
+            TestContext.WriteLine("Available Races:");
+            foreach(string raceNames in HitFab.AvailableRaces)
+            {
+                TestContext.WriteLine(raceNames);
+            }
         }
 
         [TestCase]

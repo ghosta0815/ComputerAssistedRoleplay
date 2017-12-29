@@ -73,11 +73,16 @@
     <Compile Include="Controller\IMainWindowView.cs" />
     <Compile Include="Controller\MainWindowController.cs" />
     <Compile Include="Model\CARCalculator.cs" />
+    <Compile Include="Model\Weapons\StatusEffects\CauseBleed.cs" />
+    <Compile Include="Model\Weapons\StatusEffects\CauseBreakBones.cs" />
+    <Compile Include="Model\Weapons\StatusEffects\CauseUnconsciousness.cs" />
+    <Compile Include="Model\Weapons\StatusEffects\IStatusEffects.cs" />
     <Compile Include="Model\Weapons\WeaponsFactory.cs" />
     <Compile Include="Model\JSON\WeaponsJS.cs" />
     <Compile Include="Model\Logging\Log.cs" />
     <Compile Include="Model\Weapons\Weapon.cs" />
     <Compile Include="Tests\LogTest.cs" />
+    <Compile Include="Tests\WeaponsFactoryTest.cs" />
     <Compile Include="View\HitzoneView.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -5,8 +5,8 @@
     "BashDamage": 10,
     "CutDamage": 1,
     "StatusEffects": [
-      "CanBreakBones",
-      "CanCreateUnconsciousness"
+      "BreakBones",
+      "Unconsciousness"
     ]
   },
   "Knife": {
@@ -15,7 +15,7 @@
     "BashDamage": 2,
     "CutDamage": 4,
     "StatusEffects": [
-      "CanBleed"
+      "Bleed"
     ]
   }
 }
