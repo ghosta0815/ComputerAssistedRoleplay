@@ -18,10 +18,10 @@ namespace ComputerAssistedRoleplay.Model.Weapons.StatusEffects
     /// <summary>
     /// Available Statuseffects
     /// </summary>
-    enum StatusEffects
+    enum AvailableStatusEffets
     {
         Bleed,
-        Unconscious,
+        Unconsciousness,
         BreakBones
     }
 }

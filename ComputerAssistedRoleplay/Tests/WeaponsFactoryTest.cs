@@ -73,8 +73,21 @@ namespace ComputerAssistedRoleplay.Tests
         [TestCase]
         public void WeaponAppliesStatusEffects()
         {
-            //To be written
-            Assert.IsFalse(true);
+            bool weaponContainsStatusEffects = false;
+
+            foreach(string weapID in WeapFab.AvailableWeapons)
+            {
+                foreach(IStatusEffects effect in WeapFab.getWeapon(weapID).StatusEffects)
+                {
+                    if (effect != null)
+                    {
+                        weaponContainsStatusEffects = true;
+                        TestContext.WriteLine("{0}: {1}", weapID, effect.GetType().ToString());
+                    }
+                }
+            }
+
+            Assert.IsTrue(weaponContainsStatusEffects);
         }
     }
 }

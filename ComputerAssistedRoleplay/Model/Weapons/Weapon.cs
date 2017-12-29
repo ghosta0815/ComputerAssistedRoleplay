@@ -57,7 +57,25 @@ namespace ComputerAssistedRoleplay.Model.Weapons
             BashDamage = weaponJS.BashDamage;
             CutDamage = weaponJS.CutDamage;
 
-            //To be added: Weaponeffects by Interface
+            foreach(string effectName in weaponJS.StatusEffects)
+            {
+                if(effectName == AvailableStatusEffets.Bleed.ToString())
+                {
+                    StatusEffects.Add(new CauseBleed());
+                }
+                else if(effectName == AvailableStatusEffets.BreakBones.ToString())
+                {
+                    StatusEffects.Add(new CauseBreakBones());
+                }
+                else if (effectName == AvailableStatusEffets.Unconsciousness.ToString())
+                {
+                    StatusEffects.Add(new CauseUnconsciousness());
+                }
+                else
+                {
+                    System.Diagnostics.Debug.WriteLine("Invalid Status Effect {0} detected", effectName);
+                }
+            }
         }
         #endregion
     }
