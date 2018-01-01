@@ -12,5 +12,14 @@ namespace ComputerAssistedRoleplay.Model.Weapons.StatusEffects
         {
             throw new NotImplementedException();
         }
+
+        /// <summary>
+        /// Description of the Cause Unconsciousness statuseffect
+        /// </summary>
+        /// <returns></returns>
+        public string effectDesc()
+        {
+            return "Verursacht Bewusstseinsverlust";
+        }
     }
 }

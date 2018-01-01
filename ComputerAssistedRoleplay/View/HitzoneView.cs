@@ -70,7 +70,7 @@ namespace ComputerAssistedRoleplay.View
         /// <param name="maxHit">Maximum dice value to hit the Bodypart</param>
         public void HitzonesAddBodyParts(List<string> name, List<int> minHit, List<int> maxHit)
         {
-            for(int i = 0; i < name.Count -1; i++)
+            for(int i = 0; i < name.Count; i++)
             {
                 this.HitzonesTable.Rows.Add(name[i], minHit[i], maxHit[i]);
             }

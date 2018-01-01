@@ -4,18 +4,46 @@
     "PierceDamage": 0,
     "BashDamage": 10,
     "CutDamage": 1,
+    "Weight": 1000,
+    "Length": 40,
     "StatusEffects": [
       "BreakBones",
       "Unconsciousness"
     ]
   },
-  "Knife": {
+  "Messer": {
     "Name": "Messer",
     "PierceDamage": 6,
     "BashDamage": 2,
     "CutDamage": 4,
+    "Weight": 500,
+    "Length": 35,
     "StatusEffects": [
       "Bleed"
+    ]
+  },
+    "Speer": {
+    "Name": "Speer",
+    "PierceDamage": 10,
+    "BashDamage": 2,
+    "CutDamage": 0,
+    "Weight": 800,
+    "Length": 220,
+    "StatusEffects": [
+      "Bleed"
+    ]
+  },
+    "Langschwert": {
+    "Name": "Langschwert",
+    "PierceDamage": 6,
+    "BashDamage": 8,
+    "CutDamage": 14,
+    "Weight": 1200,
+    "Length": 140,
+    "StatusEffects": [
+      "Bleed",
+      "BreakBones",
+      "Unconsciousness"
     ]
   }
 }

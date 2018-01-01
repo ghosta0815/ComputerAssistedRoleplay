@@ -77,6 +77,22 @@ namespace ComputerAssistedRoleplay.View
         }
 
         /// <summary>
+        /// Opens the WeaponsView
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void WeaponWindowCmd_Click(object sender, EventArgs e)
+        {
+            WeaponsView weapView = new WeaponsView();
+            weapView.Visible = false;
+
+            _controller.setWeaponController(weapView);
+
+            this.Enabled = true;
+            weapView.Show(this);
+        }
+
+        /// <summary>
         /// Clears the Log from any entries
         /// </summary>
         /// <param name="sender"></param>
@@ -86,5 +102,7 @@ namespace ComputerAssistedRoleplay.View
             _controller.clearLog();
         }
         #endregion
+
+
     }
 }

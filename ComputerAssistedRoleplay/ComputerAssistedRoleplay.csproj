@@ -70,8 +70,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\HitzoneViewController.cs" />
-    <Compile Include="Controller\IMainWindowView.cs" />
     <Compile Include="Controller\MainWindowController.cs" />
+    <Compile Include="Controller\WeaponViewController.cs" />
     <Compile Include="Model\CARCalculator.cs" />
     <Compile Include="Model\Weapons\StatusEffects\CauseBleed.cs" />
     <Compile Include="Model\Weapons\StatusEffects\CauseBreakBones.cs" />
@@ -97,12 +97,17 @@
     <Compile Include="Program.cs" />
     <Compile Include="Tests\HitzoneFactoryTest.cs" />
     <Compile Include="Tests\JsonTest.cs" />
-    <Compile Include="Controller\IHitzoneView.cs" />
     <Compile Include="View\MainWindowView.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\MainWindowView.Designer.cs">
       <DependentUpon>MainWindowView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\WeaponsView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\WeaponsView.Designer.cs">
+      <DependentUpon>WeaponsView.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="View\HitzoneView.resx">
       <DependentUpon>HitzoneView.cs</DependentUpon>
@@ -125,6 +130,9 @@
     <Content Include="Model\JSON\WeaponsJS.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <EmbeddedResource Include="View\WeaponsView.resx">
+      <DependentUpon>WeaponsView.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

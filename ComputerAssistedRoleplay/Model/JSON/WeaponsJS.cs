@@ -13,12 +13,14 @@ namespace ComputerAssistedRoleplay.Model.JSON
         public Dictionary<string, SingleWeaponJS> WeaponsIDValuePairs {get;set;} = new Dictionary<string,SingleWeaponJS>();
     }
 
-    class SingleWeaponJS
+    public class SingleWeaponJS
     {
         public string Name { set; get; } = "";
         public int PierceDamage { set; get; } = 0;
         public int BashDamage { set; get; } = 0;
         public int CutDamage { set; get; } = 0;
+        public int Weight { set; get; } = 0;
+        public int Length { set; get; } = 0;
         public List<string> StatusEffects { get; set; } = new List<string>();
 
     }

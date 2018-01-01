@@ -4,9 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ComputerAssistedRoleplay.Model;
+using ComputerAssistedRoleplay.Model.Logging;
 
 namespace ComputerAssistedRoleplay.Controller
 {
+    public interface IMainWindowView : ILogObserver
+    {
+        /// <summary>
+        /// Sets the controller of the View
+        /// </summary>
+        /// <param name="controller">Instance of the controller that is operating the view</param>
+        void SetController(MainWindowController controller);
+    }
+
     public class MainWindowController
     {
         #region Variables
@@ -45,12 +55,21 @@ namespace ComputerAssistedRoleplay.Controller
         }
 
         /// <summary>
-        /// Sets the Controller of the View
+        /// Sets the Controller of the Hitzone View
         /// </summary>
         /// <param name="hzView">View of the Hitzone</param>
         public void setHitZoneController(IHitzoneView hzView)
         {
             HitzoneViewController HZControl = new HitzoneViewController(hzView, _carCalc.HitFab);
+        }
+
+        /// <summary>
+        /// Sets the Controller of the Weapons View
+        /// </summary>
+        /// <param name="wpView">View of the Weapons</param>
+        public void setWeaponController(IWeaponsView wpView)
+        {
+            WeaponViewController WPView = new WeaponViewController(wpView, _carCalc.WeapFab);
         }
 
         /// <summary>

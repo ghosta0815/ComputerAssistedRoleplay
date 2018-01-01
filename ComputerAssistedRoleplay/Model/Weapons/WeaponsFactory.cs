@@ -11,7 +11,7 @@ namespace ComputerAssistedRoleplay.Model.Weapons
     /// A Factory Object for the creation of Weapons
     /// Uses WeaponsJS.json to create Weapons based on a configuration file
     /// </summary>
-    class WeaponsFactory
+    public class WeaponsFactory
     {
         #region Variables
         /// <summary>

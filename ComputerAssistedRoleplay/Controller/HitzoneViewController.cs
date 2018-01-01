@@ -1,8 +1,51 @@
 ﻿using System;
+using System.Collections.Generic;
 using ComputerAssistedRoleplay.Model.Hitzone;
 
 namespace ComputerAssistedRoleplay.Controller
 {
+    public interface IHitzoneView
+    {
+        /// <summary>
+        /// The currently selected Hitzone of the race that is displayed
+        /// </summary>
+        string selectedRace { get; set; }
+
+        /// <summary>
+        /// Sets the controller of the View
+        /// </summary>
+        /// <param name="controller">Instance of the controller that is operating the view</param>
+        void SetController(HitzoneViewController controller);
+
+        #region Hitzones
+        /// <summary>
+        /// Clears the Hitzone Display
+        /// </summary>
+        void HitzonesClearGrid();
+
+        /// <summary>
+        /// Populates the view with all hitzones
+        /// </summary>
+        /// <param name="name">Name of the Bodypart</param>
+        /// <param name="minHit">Minimum dice value to hit</param>
+        /// <param name="maxHit">Maximum dice value to hit</param>
+        void HitzonesAddBodyParts(List<string> name, List<int> minHit, List<int> maxHit);
+
+        /// <summary>
+        /// Sets the available races
+        /// </summary>
+        /// <param name="list">The available races</param>
+        void HitzonesSetAvailableRaces(List<string> list);
+
+        /// <summary>
+        /// Highlight the hitzone that got hit
+        /// </summary>
+        /// <param name="name">Name of the Hitzone</param>
+        /// <param name="thrownEyes">Thrown eyes of the dice</param>
+        void HitzonesIndicateHit(string name, int thrownEyes);
+        #endregion
+    }
+
     public class HitzoneViewController
     {
         #region Variables
@@ -26,7 +69,7 @@ namespace ComputerAssistedRoleplay.Controller
         {
             _view = view;
             _hitFab = hitFab;
-            view.SetController(this);
+            _view.SetController(this);
 
             this.LoadView();
         }
@@ -36,7 +79,7 @@ namespace ComputerAssistedRoleplay.Controller
         /// <summary>
         /// Initial setup of the View (fill with predefined values)
         /// </summary>
-        public void LoadView()
+        private void LoadView()
         {
             string defaultRace = _hitFab.AvailableRaces[0];
             Hitzones defaultHitZone = _hitFab.getZonesFor(defaultRace);

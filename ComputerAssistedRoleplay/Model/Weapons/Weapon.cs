@@ -8,7 +8,7 @@ namespace ComputerAssistedRoleplay.Model.Weapons
     /// <summary>
     /// A Weapon Object that can inflict Damage and apply status effects
     /// </summary>
-    class Weapon
+    public class Weapon
     {
         #region Variables
         /// <summary>
@@ -31,6 +31,30 @@ namespace ComputerAssistedRoleplay.Model.Weapons
         /// </summary>
         public int CutDamage { get; set; } = 0;
 
+        /// <summary>
+        /// Total weight of the weapon in g
+        /// </summary>
+        public int Weight { get; set; } = 0;
+
+        /// <summary>
+        /// Total length of the weapon in cm including handle
+        /// </summary>
+        public int Length { get; set; } = 0;
+
+        /// <summary>
+        /// Attackrange in cm in which this weapon can be used;
+        /// </summary>
+        public int AttackRange
+        {
+            get
+            {
+                return Length - 15;
+            }
+        }
+
+        /// <summary>
+        /// List of possible statuseffects the weapon can apply
+        /// </summary>
         public List<IStatusEffects> StatusEffects { get; set; } = new List<IStatusEffects>();
         #endregion
 
@@ -56,6 +80,8 @@ namespace ComputerAssistedRoleplay.Model.Weapons
             PierceDamage = weaponJS.PierceDamage;
             BashDamage = weaponJS.BashDamage;
             CutDamage = weaponJS.CutDamage;
+            Length = weaponJS.Length;
+            Weight = weaponJS.Weight;
 
             foreach(string effectName in weaponJS.StatusEffects)
             {
@@ -76,6 +102,30 @@ namespace ComputerAssistedRoleplay.Model.Weapons
                     System.Diagnostics.Debug.WriteLine("Invalid Status Effect {0} detected", effectName);
                 }
             }
+        }
+
+        /// <summary>
+        /// Overrides ToString method for detailed display of the Object
+        /// </summary>
+        /// <returns>Description of the Object</returns>
+        public override string ToString()
+        {
+            string desc = "";
+            desc += "Name: " + Name + "\r\n";
+            desc += "Schnittschaden: " + CutDamage + "\r\n";
+            desc += "Wuchtschaden:" + BashDamage + "\r\n";
+            desc += "Stichschaden:" + PierceDamage + "\r\n";
+            desc += "Gewicht: " + Weight + " g\r\n";
+            desc += "Länge: " + Length + " cm\r\n";
+            desc += "Waffenreichweite: " + AttackRange + " cm\r\n";
+            desc += "Statuseffekte:\r\n";
+            desc += "\r\n";
+            foreach(IStatusEffects stateff in StatusEffects)
+            {
+                desc += stateff.effectDesc() + "\r\n";
+            }
+
+            return desc;
         }
         #endregion
     }
