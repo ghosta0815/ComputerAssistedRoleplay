@@ -87,6 +87,7 @@
             this.Controls.Add(this.HitZoneWindowCmd);
             this.Name = "MainWindowView";
             this.Text = "MainWindow";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainWindowView_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

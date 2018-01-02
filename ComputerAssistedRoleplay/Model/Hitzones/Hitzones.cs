@@ -22,7 +22,6 @@ namespace ComputerAssistedRoleplay.Model.Hitzone
         public string RaceName { set; get; }
 
         private Random Rand { get; set; }
-        public Log CombatLog { get; set; }
 
         /// <summary>
         /// Returns the Sum of all individual hitzoneranges.
@@ -46,12 +45,11 @@ namespace ComputerAssistedRoleplay.Model.Hitzone
         /// Creates the Bodyparts that can get hit based on the JSON Inputfile
         /// </summary>
         /// <param name="hitzoneJS">Hitzone JSON that define the Bodyparts</param>
-        public Hitzones(string name, Dictionary<string, int> hitzonesDict, Random rand, Log log)
+        public Hitzones(string name, Dictionary<string, int> hitzonesDict, Random rand)
         {
             RaceName = name;
             Bodyparts = new List<SingleHitZone>();
             Rand = rand;
-            CombatLog = log;
 
             int toHitNumber = 0;
             foreach(KeyValuePair<string, int> jsHitzone in hitzonesDict)
@@ -64,11 +62,10 @@ namespace ComputerAssistedRoleplay.Model.Hitzone
         /// <summary>
         /// Creates an empty Hitzone object
         /// </summary>
-        public Hitzones(string name, Random rand, Log log)
+        public Hitzones(string name, Random rand)
         {
             Rand = rand;
             RaceName = name;
-            CombatLog = log;
         }
         #endregion
 
@@ -111,7 +108,7 @@ namespace ComputerAssistedRoleplay.Model.Hitzone
             {
                 if(bodypart.isHit(diceThrow))
                 {
-                    CombatLog.Append("Du triffst " + RaceName + ": " + bodypart.ZoneName + " mit " + diceThrow + " auf " + bodypart.ZoneIndexStart + " - " + bodypart.ZoneIndexEnd);
+                    CombatLog.getInstance.Append("Du triffst " + RaceName + ": " + bodypart.ZoneName + " mit " + diceThrow + " auf " + bodypart.ZoneIndexStart + " - " + bodypart.ZoneIndexEnd);
                     return bodypart;
                 }
             }

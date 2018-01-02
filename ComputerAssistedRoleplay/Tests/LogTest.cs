@@ -7,14 +7,7 @@ namespace ComputerAssistedRoleplay.Tests
     [TestFixture]
     class LogTest
     {
-        private Log TestLog;
         string eventString;
-
-        [SetUp]
-        public void LogInit()
-        {
-            TestLog = new Log();
-        }
          
         /// <summary>
         /// Test if the Log is created and not a null reference
@@ -22,7 +15,7 @@ namespace ComputerAssistedRoleplay.Tests
         [TestCase]
         public void LogNotNull()
         {
-            Assert.IsNotNull(TestLog);
+            Assert.IsNotNull(CombatLog.getInstance);
         }
 
         /// <summary>
@@ -32,8 +25,8 @@ namespace ComputerAssistedRoleplay.Tests
         public void CanAddText()
         {
             string testString = "Hello World";
-            TestLog.Append(testString);
-            Assert.AreEqual(testString, TestLog.Text.Trim());
+            CombatLog.getInstance.Append(testString);
+            Assert.AreEqual(testString, CombatLog.getInstance.Text.Trim());
         }
 
         /// <summary>
@@ -43,9 +36,9 @@ namespace ComputerAssistedRoleplay.Tests
         public void CanClearText()
         {
             string testString = "Hello World";
-            TestLog.Append(testString);
-            TestLog.Clear();
-            Assert.AreEqual("", TestLog.Text.Trim());
+            CombatLog.getInstance.Append(testString);
+            CombatLog.getInstance.Clear();
+            Assert.AreEqual("", CombatLog.getInstance.Text.Trim());
         }
 
         /// <summary>
@@ -56,8 +49,8 @@ namespace ComputerAssistedRoleplay.Tests
         {
             string testString = "Hello World";
 
-            TestLog.textHandler += TestLog_textChanged;
-            TestLog.Append(testString);
+            CombatLog.getInstance.textHandler += TestLog_textChanged;
+            CombatLog.getInstance.Append(testString);
 
             Assert.AreEqual(testString, eventString);
         }
@@ -68,7 +61,7 @@ namespace ComputerAssistedRoleplay.Tests
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void TestLog_textChanged(Log sender, LogEventArgs e)
+        private void TestLog_textChanged(CombatLog sender, LogEventArgs e)
         {
             eventString = e.NewLogEntry;
         }

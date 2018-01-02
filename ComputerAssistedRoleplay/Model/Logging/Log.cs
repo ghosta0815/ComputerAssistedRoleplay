@@ -62,9 +62,25 @@ namespace ComputerAssistedRoleplay.Model.Logging
     /// <summary>
     /// Stores a Log and notifies observers about changes via Events
     /// </summary>
-    public class Log : ILog
+    public sealed class CombatLog : ILog
     {
         #region Variables
+        /// <summary>
+        /// Singleton instance of Combatlog
+        /// </summary>
+        private static readonly CombatLog Log = new CombatLog();
+
+        /// <summary>
+        /// Provides access to the singleton Instance
+        /// </summary>
+        public static CombatLog getInstance
+        {
+            get
+            {
+                return Log;
+            }
+        }
+
         /// <summary>
         /// The Log text
         /// </summary>
@@ -75,7 +91,7 @@ namespace ComputerAssistedRoleplay.Model.Logging
         /// <summary>
         /// Creates an Instance of the Log
         /// </summary>
-        public Log()
+        private CombatLog()
         {
             Text = "";
         }
@@ -112,7 +128,7 @@ namespace ComputerAssistedRoleplay.Model.Logging
         /// <summary>
         /// Occurs when the Text of the log changes.
         /// </summary>
-        public event LogHandler<Log> textHandler;
+        public event LogHandler<CombatLog> textHandler;
 
         /// <summary>
         /// Subscribe if you want to get notified about changes to the Log
@@ -120,7 +136,7 @@ namespace ComputerAssistedRoleplay.Model.Logging
         /// <param name="ilo"></param>
         public void Subscribe(ILogObserver ilo)
         {
-            textHandler += new LogHandler<Log>(ilo.logTextChanged);
+            textHandler += new LogHandler<CombatLog>(ilo.logTextChanged);
         }
 
         /// <summary>
@@ -129,7 +145,7 @@ namespace ComputerAssistedRoleplay.Model.Logging
         /// <param name="ilo"></param>
         public void UnSubscribe(ILogObserver ilo)
         {
-            textHandler -= new LogHandler<Log>(ilo.logTextChanged);
+            textHandler -= new LogHandler<CombatLog>(ilo.logTextChanged);
         }
         #endregion
     }

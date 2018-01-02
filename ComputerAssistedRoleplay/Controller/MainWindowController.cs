@@ -40,8 +40,8 @@ namespace ComputerAssistedRoleplay.Controller
         {
             _view = view;
             _carCalc = calculator;
-            view.SetController(this);
-            calculator.CombatLog.Subscribe(view);
+            _view.SetController(this);
+            _carCalc.Log.Subscribe(_view);
         }
         #endregion
 
@@ -77,7 +77,15 @@ namespace ComputerAssistedRoleplay.Controller
         /// </summary>
         public void clearLog()
         {
-            _carCalc.CombatLog.Clear();
+            _carCalc.Log.Clear();
+        }
+
+        /// <summary>
+        /// Close action of the MainWindow (Cleanup time)
+        /// </summary>
+        internal void Close()
+        {
+            _carCalc.Log.UnSubscribe(_view);
         }
         #endregion
     }

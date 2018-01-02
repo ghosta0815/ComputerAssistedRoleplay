@@ -101,8 +101,12 @@ namespace ComputerAssistedRoleplay.View
         {
             _controller.clearLog();
         }
+
         #endregion
 
-
+        private void MainWindowView_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            _controller.Close();
+        }
     }
 }

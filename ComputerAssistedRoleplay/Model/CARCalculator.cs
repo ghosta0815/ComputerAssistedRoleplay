@@ -1,4 +1,5 @@
 ﻿using System;
+using ComputerAssistedRoleplay.Model.Logging;
 using ComputerAssistedRoleplay.Model.Hitzone;
 using ComputerAssistedRoleplay.Model.Weapons;
 
@@ -14,14 +15,14 @@ namespace ComputerAssistedRoleplay.Model
         public CharacterSheet PlayerCharacter { get; }
         public int Round { get; set; }
 
-        public Logging.Log CombatLog { get; set; }
+        public CombatLog Log { get; set; }
 
         #region Constructors
         public CARCalculator()
         {
             Rand = new Random();
-            CombatLog = new Logging.Log();
-            HitFab = new HitzoneFactory(Rand, CombatLog);
+            Log = CombatLog.getInstance;
+            HitFab = new HitzoneFactory(Rand);
             WeapFab = new WeaponsFactory();
 
             PlayerCharacter = new CharacterSheet(HitFab.getZonesFor(HitFab.AvailableRaces[0]));

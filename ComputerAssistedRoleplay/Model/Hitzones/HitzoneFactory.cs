@@ -27,26 +27,21 @@ namespace ComputerAssistedRoleplay.Model.Hitzone
         /// Random Number Generator of the application
         /// </summary>
         private Random Rand { get; set; }
-        /// <summary>
-        /// The Combat Log of the application
-        /// </summary>
-        private Log CombatLog { get; set; }
         #endregion
 
         #region Constructors
         /// <summary>
         /// Creates a new instance of the Hitzone Factory
         /// </summary>
-        public HitzoneFactory(Random rand, Log log)
+        public HitzoneFactory(Random rand)
         {
             Rand = rand;
-            CombatLog = log;
             RaceHitzones = new Dictionary<string, Hitzones>();
             HitzonesJS jsHitzones = loadHitzonesJSON();
 
             foreach(KeyValuePair<string, Dictionary<string, int>> hitzones in jsHitzones.HitZoneIDValuePairs)
             {
-                RaceHitzones.Add(hitzones.Key, new Hitzones(hitzones.Key, hitzones.Value, Rand, CombatLog));
+                RaceHitzones.Add(hitzones.Key, new Hitzones(hitzones.Key, hitzones.Value, Rand));
             }
         }
         #endregion
@@ -66,7 +61,7 @@ namespace ComputerAssistedRoleplay.Model.Hitzone
             else
             {
                 System.Diagnostics.Debug.WriteLine("Hitzones for Race {0} not found", race);
-                return new Hitzones(race, Rand, CombatLog);
+                return new Hitzones(race, Rand);
             }
         }
 
