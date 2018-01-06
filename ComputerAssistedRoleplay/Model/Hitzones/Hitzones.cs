@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ComputerAssistedRoleplay.Model.JSON;
 using ComputerAssistedRoleplay.Model.Logging;
+using ComputerAssistedRoleplay.Model.RandomGenerator;
 
 namespace ComputerAssistedRoleplay.Model.Hitzone
 {
@@ -20,8 +18,6 @@ namespace ComputerAssistedRoleplay.Model.Hitzone
         /// Name of the race where this hitzones apply.
         /// </summary>
         public string RaceName { set; get; }
-
-        private Random Rand { get; set; }
 
         /// <summary>
         /// Returns the Sum of all individual hitzoneranges.
@@ -45,11 +41,10 @@ namespace ComputerAssistedRoleplay.Model.Hitzone
         /// Creates the Bodyparts that can get hit based on the JSON Inputfile
         /// </summary>
         /// <param name="hitzoneJS">Hitzone JSON that define the Bodyparts</param>
-        public Hitzones(string name, Dictionary<string, int> hitzonesDict, Random rand)
+        public Hitzones(string name, Dictionary<string, int> hitzonesDict)
         {
             RaceName = name;
             Bodyparts = new List<SingleHitZone>();
-            Rand = rand;
 
             int toHitNumber = 0;
             foreach(KeyValuePair<string, int> jsHitzone in hitzonesDict)
@@ -62,9 +57,8 @@ namespace ComputerAssistedRoleplay.Model.Hitzone
         /// <summary>
         /// Creates an empty Hitzone object
         /// </summary>
-        public Hitzones(string name, Random rand)
+        public Hitzones(string name)
         {
-            Rand = rand;
             RaceName = name;
         }
         #endregion
@@ -102,7 +96,7 @@ namespace ComputerAssistedRoleplay.Model.Hitzone
         /// <returns>Bodypart that got hit</returns>
         public SingleHitZone randomizeHitzone()
         {
-            int diceThrow = Rand.Next(1, TotalZonePoints+1);
+            int diceThrow = RNG.Instance.throwDiceWithSides(TotalZonePoints);
 
             foreach(SingleHitZone bodypart in Bodyparts)
             {

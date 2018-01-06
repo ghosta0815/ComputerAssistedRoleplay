@@ -32,11 +32,15 @@
             this.LogTextBox = new System.Windows.Forms.TextBox();
             this.ClearLogCmd = new System.Windows.Forms.Button();
             this.WeaponWindowCmd = new System.Windows.Forms.Button();
+            this.throw1w6Cmd = new System.Windows.Forms.Button();
+            this.throw3w20Cmd = new System.Windows.Forms.Button();
+            this.throw3w6Cmd = new System.Windows.Forms.Button();
+            this.throw1w20Cmd = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // HitZoneWindowCmd
             // 
-            this.HitZoneWindowCmd.Location = new System.Drawing.Point(531, 13);
+            this.HitZoneWindowCmd.Location = new System.Drawing.Point(539, 13);
             this.HitZoneWindowCmd.Name = "HitZoneWindowCmd";
             this.HitZoneWindowCmd.Size = new System.Drawing.Size(75, 23);
             this.HitZoneWindowCmd.TabIndex = 0;
@@ -68,7 +72,7 @@
             // 
             // WeaponWindowCmd
             // 
-            this.WeaponWindowCmd.Location = new System.Drawing.Point(531, 42);
+            this.WeaponWindowCmd.Location = new System.Drawing.Point(539, 42);
             this.WeaponWindowCmd.Name = "WeaponWindowCmd";
             this.WeaponWindowCmd.Size = new System.Drawing.Size(75, 23);
             this.WeaponWindowCmd.TabIndex = 3;
@@ -76,11 +80,55 @@
             this.WeaponWindowCmd.UseVisualStyleBackColor = true;
             this.WeaponWindowCmd.Click += new System.EventHandler(this.WeaponWindowCmd_Click);
             // 
+            // throw1w6Cmd
+            // 
+            this.throw1w6Cmd.Location = new System.Drawing.Point(428, 307);
+            this.throw1w6Cmd.Name = "throw1w6Cmd";
+            this.throw1w6Cmd.Size = new System.Drawing.Size(42, 40);
+            this.throw1w6Cmd.TabIndex = 4;
+            this.throw1w6Cmd.Text = "1w6";
+            this.throw1w6Cmd.UseVisualStyleBackColor = true;
+            this.throw1w6Cmd.Click += new System.EventHandler(this.throw1w6Cmd_Click);
+            // 
+            // throw3w20Cmd
+            // 
+            this.throw3w20Cmd.Location = new System.Drawing.Point(572, 307);
+            this.throw3w20Cmd.Name = "throw3w20Cmd";
+            this.throw3w20Cmd.Size = new System.Drawing.Size(42, 40);
+            this.throw3w20Cmd.TabIndex = 4;
+            this.throw3w20Cmd.Text = "3w20";
+            this.throw3w20Cmd.UseVisualStyleBackColor = true;
+            this.throw3w20Cmd.Click += new System.EventHandler(this.throw3w20Cmd_Click);
+            // 
+            // throw3w6Cmd
+            // 
+            this.throw3w6Cmd.Location = new System.Drawing.Point(476, 307);
+            this.throw3w6Cmd.Name = "throw3w6Cmd";
+            this.throw3w6Cmd.Size = new System.Drawing.Size(42, 40);
+            this.throw3w6Cmd.TabIndex = 4;
+            this.throw3w6Cmd.Text = "3w6";
+            this.throw3w6Cmd.UseVisualStyleBackColor = true;
+            this.throw3w6Cmd.Click += new System.EventHandler(this.throw3w6Cmd_Click);
+            // 
+            // throw1w20Cmd
+            // 
+            this.throw1w20Cmd.Location = new System.Drawing.Point(524, 307);
+            this.throw1w20Cmd.Name = "throw1w20Cmd";
+            this.throw1w20Cmd.Size = new System.Drawing.Size(42, 40);
+            this.throw1w20Cmd.TabIndex = 4;
+            this.throw1w20Cmd.Text = "1w20";
+            this.throw1w20Cmd.UseVisualStyleBackColor = true;
+            this.throw1w20Cmd.Click += new System.EventHandler(this.throw1w20Cmd_Click);
+            // 
             // MainWindowView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(618, 388);
+            this.ClientSize = new System.Drawing.Size(621, 388);
+            this.Controls.Add(this.throw1w20Cmd);
+            this.Controls.Add(this.throw3w6Cmd);
+            this.Controls.Add(this.throw3w20Cmd);
+            this.Controls.Add(this.throw1w6Cmd);
             this.Controls.Add(this.WeaponWindowCmd);
             this.Controls.Add(this.ClearLogCmd);
             this.Controls.Add(this.LogTextBox);
@@ -99,5 +147,9 @@
         private System.Windows.Forms.TextBox LogTextBox;
         private System.Windows.Forms.Button ClearLogCmd;
         private System.Windows.Forms.Button WeaponWindowCmd;
+        private System.Windows.Forms.Button throw1w6Cmd;
+        private System.Windows.Forms.Button throw3w20Cmd;
+        private System.Windows.Forms.Button throw3w6Cmd;
+        private System.Windows.Forms.Button throw1w20Cmd;
     }
 }

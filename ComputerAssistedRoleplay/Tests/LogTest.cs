@@ -25,6 +25,7 @@ namespace ComputerAssistedRoleplay.Tests
         public void CanAddText()
         {
             string testString = "Hello World";
+            CombatLog.getInstance.Clear();
             CombatLog.getInstance.Append(testString);
             Assert.AreEqual(testString, CombatLog.getInstance.Text.Trim());
         }

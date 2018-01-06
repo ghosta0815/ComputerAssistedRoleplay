@@ -13,7 +13,7 @@ namespace ComputerAssistedRoleplay.Tests
         public void InitHitzone()
         {
             Random rand = new Random();
-            HitFab = new HitzoneFactory(rand);
+            HitFab = new HitzoneFactory();
         }
 
         [TestCase]

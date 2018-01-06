@@ -2,6 +2,7 @@
 using ComputerAssistedRoleplay.Model.Logging;
 using ComputerAssistedRoleplay.Model.Hitzone;
 using ComputerAssistedRoleplay.Model.Weapons;
+using ComputerAssistedRoleplay.Model.RandomGenerator;
 
 namespace ComputerAssistedRoleplay.Model
 {
@@ -10,7 +11,6 @@ namespace ComputerAssistedRoleplay.Model
         public HitzoneFactory HitFab { get; set; }
         public WeaponsFactory WeapFab { get; set; }
 
-        private Random Rand { get; set; }
 
         public CharacterSheet PlayerCharacter { get; }
         public int Round { get; set; }
@@ -20,9 +20,8 @@ namespace ComputerAssistedRoleplay.Model
         #region Constructors
         public CARCalculator()
         {
-            Rand = new Random();
             Log = CombatLog.getInstance;
-            HitFab = new HitzoneFactory(Rand);
+            HitFab = new HitzoneFactory();
             WeapFab = new WeaponsFactory();
 
             PlayerCharacter = new CharacterSheet(HitFab.getZonesFor(HitFab.AvailableRaces[0]));
@@ -34,7 +33,9 @@ namespace ComputerAssistedRoleplay.Model
         #region Methods for Random Numbers
         public int throwDice(int maxPoints)
         {
-            return Rand.Next(maxPoints+1);
+            int thrownNumber = RNG.Instance.throwDiceWithSides(maxPoints);
+            Log.Append("Es fallen " + thrownNumber + " Augen auf w" + maxPoints);
+            return thrownNumber;
         }
         #endregion
     }

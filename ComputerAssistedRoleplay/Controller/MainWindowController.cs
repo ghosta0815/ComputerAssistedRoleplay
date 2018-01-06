@@ -87,6 +87,23 @@ namespace ComputerAssistedRoleplay.Controller
         {
             _carCalc.Log.UnSubscribe(_view);
         }
+
+        internal void throwDice(int numberOfDice, int diceSides)
+        {
+            int sum = 0;
+            _carCalc.Log.Append("");
+            for (int i = 0; i < numberOfDice; i++)
+            {
+                sum += _carCalc.throwDice(diceSides);
+                
+            }
+
+            if(numberOfDice>1)
+            {
+                _carCalc.Log.Append("Gesamtaugenzahl: " + sum);
+            }
+
+        }
         #endregion
     }
 }

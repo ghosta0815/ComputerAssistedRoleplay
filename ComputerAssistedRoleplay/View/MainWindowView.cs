@@ -102,11 +102,36 @@ namespace ComputerAssistedRoleplay.View
             _controller.clearLog();
         }
 
-        #endregion
-
+        /// <summary>
+        /// Closes the form and calls the procedure for controlled shutdown
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MainWindowView_FormClosing(object sender, FormClosingEventArgs e)
         {
             _controller.Close();
         }
+
+        private void throw1w6Cmd_Click(object sender, EventArgs e)
+        {
+            _controller.throwDice(1, 6);
+        }
+
+        private void throw3w6Cmd_Click(object sender, EventArgs e)
+        {
+            _controller.throwDice(3, 6);
+        }
+
+        private void throw1w20Cmd_Click(object sender, EventArgs e)
+        {
+            _controller.throwDice(1, 20);
+        }
+
+        private void throw3w20Cmd_Click(object sender, EventArgs e)
+        {
+            _controller.throwDice(3, 20);
+        }
+
+        #endregion
     }
 }

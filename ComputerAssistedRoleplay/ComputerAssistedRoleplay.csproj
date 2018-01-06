@@ -73,6 +73,7 @@
     <Compile Include="Controller\MainWindowController.cs" />
     <Compile Include="Controller\WeaponViewController.cs" />
     <Compile Include="Model\CARCalculator.cs" />
+    <Compile Include="Model\RandomGenerator\RNG.cs" />
     <Compile Include="Model\Weapons\StatusEffects\CauseBleed.cs" />
     <Compile Include="Model\Weapons\StatusEffects\CauseBreakBones.cs" />
     <Compile Include="Model\Weapons\StatusEffects\CauseUnconsciousness.cs" />
@@ -82,6 +83,7 @@
     <Compile Include="Model\Logging\Log.cs" />
     <Compile Include="Model\Weapons\Weapon.cs" />
     <Compile Include="Tests\LogTest.cs" />
+    <Compile Include="Tests\RNGTest.cs" />
     <Compile Include="Tests\WeaponsFactoryTest.cs" />
     <Compile Include="View\HitzoneView.cs">
       <SubType>Form</SubType>
