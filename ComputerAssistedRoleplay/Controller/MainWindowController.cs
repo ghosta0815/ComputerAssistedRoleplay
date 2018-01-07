@@ -88,6 +88,11 @@ namespace ComputerAssistedRoleplay.Controller
             _carCalc.Log.UnSubscribe(_view);
         }
 
+        /// <summary>
+        /// Throws X number of dice with Y sides and attaches the result to the Log.
+        /// </summary>
+        /// <param name="numberOfDice">Number of Dice that are thrown</param>
+        /// <param name="diceSides">Number of sides each dice has</param>
         internal void throwDice(int numberOfDice, int diceSides)
         {
             int sum = 0;
@@ -102,7 +107,6 @@ namespace ComputerAssistedRoleplay.Controller
             {
                 _carCalc.Log.Append("Gesamtaugenzahl: " + sum);
             }
-
         }
         #endregion
     }

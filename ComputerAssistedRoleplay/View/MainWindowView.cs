@@ -112,26 +112,45 @@ namespace ComputerAssistedRoleplay.View
             _controller.Close();
         }
 
+        /// <summary>
+        /// Throws one six sided die
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void throw1w6Cmd_Click(object sender, EventArgs e)
         {
             _controller.throwDice(1, 6);
         }
 
+        /// <summary>
+        /// Throws three six sided dies
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void throw3w6Cmd_Click(object sender, EventArgs e)
         {
             _controller.throwDice(3, 6);
         }
 
+        /// <summary>
+        /// Throws one twenty sided die
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void throw1w20Cmd_Click(object sender, EventArgs e)
         {
             _controller.throwDice(1, 20);
         }
 
+        /// <summary>
+        /// Throws three twenty sided die.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void throw3w20Cmd_Click(object sender, EventArgs e)
         {
             _controller.throwDice(3, 20);
         }
-
         #endregion
     }
 }
