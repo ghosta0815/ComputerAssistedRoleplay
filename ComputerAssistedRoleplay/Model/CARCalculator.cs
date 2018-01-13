@@ -10,11 +10,14 @@ namespace ComputerAssistedRoleplay.Model
     {
         public HitzoneFactory HitFab { get; set; }
         public WeaponsFactory WeapFab { get; set; }
-
+        public DiceInterpreter DiceEngine { get; set; }
 
         public CharacterSheet PlayerCharacter { get; }
         public int Round { get; set; }
 
+        /// <summary>
+        /// Provides the combat log of the Model to the outer world (e.g. the controller)
+        /// </summary>
         public CombatLog Log { get; set; }
 
         #region Constructors
@@ -23,6 +26,7 @@ namespace ComputerAssistedRoleplay.Model
             Log = CombatLog.getInstance;
             HitFab = new HitzoneFactory();
             WeapFab = new WeaponsFactory();
+            DiceEngine = new DiceInterpreter();
 
             PlayerCharacter = new CharacterSheet(HitFab.getZonesFor(HitFab.AvailableRaces[0]));
             Round = 0;
@@ -35,6 +39,21 @@ namespace ComputerAssistedRoleplay.Model
         {
             int thrownNumber = RNG.Instance.throwDiceWithSides(maxPoints);
             Log.Append("Es fallen " + thrownNumber + " Augen auf w" + maxPoints);
+            return thrownNumber;
+        }
+
+        public int throwDiceByFormula(string diceString)
+        {
+            int thrownNumber = 0;
+            if(DiceEngine.isValidDiceFormula(diceString))
+            {
+                thrownNumber = DiceEngine.throwDiceWithFormula(diceString);
+                Log.Append("Es fallen " + thrownNumber + " Augen auf " + diceString);
+            }
+            else
+            {
+                Log.Append("Ungültige Formel");
+            }
             return thrownNumber;
         }
         #endregion

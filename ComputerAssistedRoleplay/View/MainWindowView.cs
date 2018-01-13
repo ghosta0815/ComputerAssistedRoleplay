@@ -151,6 +151,16 @@ namespace ComputerAssistedRoleplay.View
         {
             _controller.throwDice(3, 20);
         }
+
+        /// <summary>
+        /// Interpretes a dice String and throws that many dice
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void throwDiceStringCmd_Click(object sender, EventArgs e)
+        {
+            _controller.throwDiceString(diceStringTextBox.Text);
+        }
         #endregion
     }
 }

@@ -36,6 +36,8 @@
             this.throw3w20Cmd = new System.Windows.Forms.Button();
             this.throw3w6Cmd = new System.Windows.Forms.Button();
             this.throw1w20Cmd = new System.Windows.Forms.Button();
+            this.diceStringTextBox = new System.Windows.Forms.TextBox();
+            this.throwDiceStringCmd = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // HitZoneWindowCmd
@@ -120,11 +122,31 @@
             this.throw1w20Cmd.UseVisualStyleBackColor = true;
             this.throw1w20Cmd.Click += new System.EventHandler(this.throw1w20Cmd_Click);
             // 
+            // diceStringTextBox
+            // 
+            this.diceStringTextBox.Location = new System.Drawing.Point(429, 281);
+            this.diceStringTextBox.Name = "diceStringTextBox";
+            this.diceStringTextBox.Size = new System.Drawing.Size(115, 20);
+            this.diceStringTextBox.TabIndex = 5;
+            this.diceStringTextBox.Text = "1w6+3";
+            // 
+            // throwDiceStringCmd
+            // 
+            this.throwDiceStringCmd.Location = new System.Drawing.Point(550, 281);
+            this.throwDiceStringCmd.Name = "throwDiceStringCmd";
+            this.throwDiceStringCmd.Size = new System.Drawing.Size(64, 20);
+            this.throwDiceStringCmd.TabIndex = 6;
+            this.throwDiceStringCmd.Text = "Würfeln";
+            this.throwDiceStringCmd.UseVisualStyleBackColor = true;
+            this.throwDiceStringCmd.Click += new System.EventHandler(this.throwDiceStringCmd_Click);
+            // 
             // MainWindowView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(621, 388);
+            this.Controls.Add(this.throwDiceStringCmd);
+            this.Controls.Add(this.diceStringTextBox);
             this.Controls.Add(this.throw1w20Cmd);
             this.Controls.Add(this.throw3w6Cmd);
             this.Controls.Add(this.throw3w20Cmd);
@@ -151,5 +173,7 @@
         private System.Windows.Forms.Button throw3w20Cmd;
         private System.Windows.Forms.Button throw3w6Cmd;
         private System.Windows.Forms.Button throw1w20Cmd;
+        private System.Windows.Forms.TextBox diceStringTextBox;
+        private System.Windows.Forms.Button throwDiceStringCmd;
     }
 }

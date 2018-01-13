@@ -108,6 +108,15 @@ namespace ComputerAssistedRoleplay.Controller
                 _carCalc.Log.Append("Gesamtaugenzahl: " + sum);
             }
         }
+
+        /// <summary>
+        /// Throws a Number of dice according to diceString
+        /// </summary>
+        /// <param name="diceString"></param>
+        internal void throwDiceString(string diceString)
+        {
+            _carCalc.throwDiceByFormula(diceString);
+        }
         #endregion
     }
 }
