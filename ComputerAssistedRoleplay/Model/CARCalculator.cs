@@ -47,7 +47,8 @@ namespace ComputerAssistedRoleplay.Model
             int thrownNumber = 0;
             if(DiceEngine.isValidDiceFormula(diceString))
             {
-                thrownNumber = DiceEngine.throwDiceWithFormula(diceString);
+                Dice diceToThrow = DiceEngine.getDice(diceString);
+                thrownNumber = diceToThrow.Throw();
                 Log.Append("Es fallen " + thrownNumber + " Augen auf " + diceString);
             }
             else

@@ -20,7 +20,7 @@ namespace ComputerAssistedRoleplay.Model.RandomGenerator
         /// <returns>True if formulaString is a valid expression</returns>
         public bool isValidDiceFormula(string formulaString)
         {
-            Regex dicePattern = new Regex(@"^\d+w\d+[\+-]?\d*$");
+            Regex dicePattern = new Regex(@"(^\d+w\d+([\+-]?\d)*$|^\d+$)");
             return dicePattern.IsMatch(formulaString);
         }
 
@@ -29,20 +29,13 @@ namespace ComputerAssistedRoleplay.Model.RandomGenerator
         /// </summary>
         /// <param name="formula">formula to interpret (e.g. 1w6+1)</param>
         /// <returns>Random number in the specified range</returns>
-        public int throwDiceWithFormula(string formula)
+        public Dice getDice(string formula)
         {
             int diceAmount = GetDiceAmount(formula);
             int diceSides = GetDiceSides(formula);
             int adder = getAdder(formula);
 
-            int resultSum = 0;
-            for (int diceNumber = 1; diceNumber <= diceAmount; diceNumber++)
-            {
-                resultSum += RNG.Instance.throwDiceWithSides(diceSides);
-
-            }
-
-            return resultSum + adder;
+            return new Dice(diceAmount, diceSides, adder);
         }
 
         /// <summary>
@@ -52,7 +45,7 @@ namespace ComputerAssistedRoleplay.Model.RandomGenerator
         /// <returns>What is added to the dicethrow</returns>
         public int getAdder(string formula)
         {
-            Regex adderRegex = new Regex(@"[\+-]\d*$");
+            Regex adderRegex = new Regex(@"([\+-]\d*$|^\d+$)");
             string adderString = adderRegex.Match(formula).ToString();
             int adder = 0;
 
@@ -76,12 +69,18 @@ namespace ComputerAssistedRoleplay.Model.RandomGenerator
             string diceString = diceRegex.Match(formula).ToString();
 
             int diceSides = 0;
-            string diceSidesStr = diceString.Split('w')[1];
+            if (diceString == "")
+            {
+                return diceSides;
+            } else
+            {
+                string diceSidesStr = diceString.Split('w')[1];
 
-            if (!Int32.TryParse(diceSidesStr, out diceSides))
-                System.Diagnostics.Debug.WriteLine("Could not parse '{0}' to sides of dice.\n", formula);
+                if (!Int32.TryParse(diceSidesStr, out diceSides))
+                    System.Diagnostics.Debug.WriteLine("Could not parse '{0}' to sides of dice.\n", formula);
 
-            return diceSides;
+                return diceSides;
+            }
         }
 
         /// <summary>
@@ -95,12 +94,19 @@ namespace ComputerAssistedRoleplay.Model.RandomGenerator
             string diceString = diceRegex.Match(formula).ToString();
 
             int diceAmount = 0;
+            if(diceString == "")
+            {
+                return diceAmount;
+            }
+            else
+            {
             string diceAmountStr = diceString.Split('w')[0];
 
             if (!Int32.TryParse(diceAmountStr, out diceAmount))
                 System.Diagnostics.Debug.WriteLine("Could not parse '{0}' to an amount of dice.\n", formula);
 
             return diceAmount;
+            }
         }
     }
 }

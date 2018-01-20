@@ -14,6 +14,7 @@ namespace ComputerAssistedRoleplay.Tests
             DiceInterpreter diceEngine = new DiceInterpreter();
 
             Dictionary<string, bool> diceFormulaTestStrings = new Dictionary<string, bool>();
+            diceFormulaTestStrings.Add("2", true);
             diceFormulaTestStrings.Add("1w6", true);
             diceFormulaTestStrings.Add("3w2+1", true);
             diceFormulaTestStrings.Add("9w4-3", true);
@@ -23,6 +24,7 @@ namespace ComputerAssistedRoleplay.Tests
             diceFormulaTestStrings.Add("(1w6)", false);
             diceFormulaTestStrings.Add("a", false);
             diceFormulaTestStrings.Add("3w5+2w4", false);
+            diceFormulaTestStrings.Add("3w5+", false);
 
             foreach (string testStr in diceFormulaTestStrings.Keys)
             {
@@ -46,6 +48,7 @@ namespace ComputerAssistedRoleplay.Tests
             DiceInterpreter diceEngine = new DiceInterpreter();
 
             Dictionary<string, bool> diceFormulaTestStrings = new Dictionary<string, bool>();
+            diceFormulaTestStrings.Add("2", true);
             diceFormulaTestStrings.Add("1w6", true);
             diceFormulaTestStrings.Add("3w2+1", true);
             diceFormulaTestStrings.Add("9w4-3", true);
@@ -56,7 +59,8 @@ namespace ComputerAssistedRoleplay.Tests
             {
                 try
                 {
-                    int result = diceEngine.throwDiceWithFormula(testStr);
+                    Dice dice = diceEngine.getDice(testStr);
+                    int result = dice.Throw();
                     TestContext.WriteLine("Evaluating \t{0} returns {1}", testStr, result);
                 }
                 catch (Exception ex)
@@ -75,6 +79,7 @@ namespace ComputerAssistedRoleplay.Tests
             DiceInterpreter diceEngine = new DiceInterpreter();
 
             Dictionary<string, int> numberOfDice = new Dictionary<string, int>();
+            numberOfDice.Add("2", 0);
             numberOfDice.Add("1w6", 1);
             numberOfDice.Add("3w2+1", 3);
             numberOfDice.Add("9w4-3", 9);
@@ -95,6 +100,7 @@ namespace ComputerAssistedRoleplay.Tests
             DiceInterpreter diceEngine = new DiceInterpreter();
 
             Dictionary<string, int> numberOfSides = new Dictionary<string, int>();
+            numberOfSides.Add("2", 0);
             numberOfSides.Add("1w6", 6);
             numberOfSides.Add("3w2+1", 2);
             numberOfSides.Add("9w4-3", 4);
@@ -115,6 +121,7 @@ namespace ComputerAssistedRoleplay.Tests
             DiceInterpreter diceEngine = new DiceInterpreter();
 
             Dictionary<string, int> adderTests = new Dictionary<string, int>();
+            adderTests.Add("2", 2);
             adderTests.Add("1w6", 0);
             adderTests.Add("3w2+1", 1);
             adderTests.Add("9w4-3", -3);

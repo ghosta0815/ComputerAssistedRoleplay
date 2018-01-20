@@ -73,6 +73,7 @@
     <Compile Include="Controller\MainWindowController.cs" />
     <Compile Include="Controller\WeaponViewController.cs" />
     <Compile Include="Model\CARCalculator.cs" />
+    <Compile Include="Model\RandomGenerator\Dice.cs" />
     <Compile Include="Model\RandomGenerator\DiceInterpreter.cs" />
     <Compile Include="Model\RandomGenerator\RNG.cs" />
     <Compile Include="Model\Weapons\StatusEffects\CauseBleed.cs" />
