@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using ComputerAssistedRoleplay.Model.JSON;
-using ComputerAssistedRoleplay.Model.Weapons.StatusEffects;
+using ComputerAssistedRoleplay.Model.Weapons.Affliction;
 
 namespace ComputerAssistedRoleplay.Model.Weapons
 {
@@ -55,7 +55,7 @@ namespace ComputerAssistedRoleplay.Model.Weapons
         /// <summary>
         /// List of possible statuseffects the weapon can apply
         /// </summary>
-        public List<IStatusEffects> StatusEffects { get; set; } = new List<IStatusEffects>();
+        public List<ICauseAfflictions> Afflictions { get; set; } = new List<ICauseAfflictions>();
         #endregion
 
         #region Constructors
@@ -85,17 +85,17 @@ namespace ComputerAssistedRoleplay.Model.Weapons
 
             foreach(string effectName in weaponJS.StatusEffects)
             {
-                if(effectName == AvailableStatusEffets.Bleed.ToString())
+                if(effectName == AvailableAfflictions.Bleed.ToString())
                 {
-                    StatusEffects.Add(new CauseBleed());
+                    Afflictions.Add(new CauseBleed());
                 }
-                else if(effectName == AvailableStatusEffets.BreakBones.ToString())
+                else if(effectName == AvailableAfflictions.BreakBones.ToString())
                 {
-                    StatusEffects.Add(new CauseBreakBones());
+                    Afflictions.Add(new CauseBreakBones());
                 }
-                else if (effectName == AvailableStatusEffets.Unconsciousness.ToString())
+                else if (effectName == AvailableAfflictions.Unconsciousness.ToString())
                 {
-                    StatusEffects.Add(new CauseUnconsciousness());
+                    Afflictions.Add(new CauseUnconsciousness());
                 }
                 else
                 {
@@ -120,9 +120,9 @@ namespace ComputerAssistedRoleplay.Model.Weapons
             desc += "Waffenreichweite: " + AttackRange + " cm\r\n";
             desc += "Statuseffekte:\r\n";
             desc += "\r\n";
-            foreach(IStatusEffects stateff in StatusEffects)
+            foreach(ICauseAfflictions affliciton in Afflictions)
             {
-                desc += stateff.effectDesc() + "\r\n";
+                desc += affliciton.effectDesc() + "\r\n";
             }
 
             return desc;

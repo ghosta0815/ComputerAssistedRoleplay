@@ -73,13 +73,20 @@
     <Compile Include="Controller\MainWindowController.cs" />
     <Compile Include="Controller\WeaponViewController.cs" />
     <Compile Include="Model\CARCalculator.cs" />
+    <Compile Include="Model\Character\DamageItem.cs" />
+    <Compile Include="Model\Character\StatusEffect\StatusFactory.cs" />
+    <Compile Include="Model\Character\StatusEffect\Bleed.cs" />
+    <Compile Include="Model\Character\StatusEffect\BrokenBone.cs" />
+    <Compile Include="Model\Character\StatusEffect\IStatusEffect.cs" />
+    <Compile Include="Model\Character\StatusEffect\Unconsciousness.cs" />
+    <Compile Include="Model\Character\StatusSheet.cs" />
     <Compile Include="Model\RandomGenerator\Dice.cs" />
     <Compile Include="Model\RandomGenerator\DiceInterpreter.cs" />
     <Compile Include="Model\RandomGenerator\RNG.cs" />
-    <Compile Include="Model\Weapons\StatusEffects\CauseBleed.cs" />
-    <Compile Include="Model\Weapons\StatusEffects\CauseBreakBones.cs" />
-    <Compile Include="Model\Weapons\StatusEffects\CauseUnconsciousness.cs" />
-    <Compile Include="Model\Weapons\StatusEffects\IStatusEffects.cs" />
+    <Compile Include="Model\Weapons\Afflictions\CauseBleed.cs" />
+    <Compile Include="Model\Weapons\Afflictions\CauseBreakBones.cs" />
+    <Compile Include="Model\Weapons\Afflictions\CauseUnconsciousness.cs" />
+    <Compile Include="Model\Weapons\Afflictions\ICauseAfflictions.cs" />
     <Compile Include="Model\Weapons\WeaponsFactory.cs" />
     <Compile Include="Model\JSON\WeaponsJS.cs" />
     <Compile Include="Model\Logging\Log.cs" />
@@ -96,7 +103,7 @@
     </Compile>
     <Compile Include="Model\Hitzones\HitzoneFactory.cs" />
     <Compile Include="Model\Hitzones\Hitzones.cs" />
-    <Compile Include="Model\CharacterSheet.cs" />
+    <Compile Include="Model\Character\CharacterSheet.cs" />
     <Compile Include="Model\Hitzones\SingleHitZone.cs" />
     <Compile Include="Model\JSON\HitzonesJS.cs" />
     <Compile Include="Program.cs" />

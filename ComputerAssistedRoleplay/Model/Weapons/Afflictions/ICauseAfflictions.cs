@@ -1,30 +1,36 @@
 ﻿using System;
+using ComputerAssistedRoleplay.Model.Character;
 
-
-namespace ComputerAssistedRoleplay.Model.Weapons.StatusEffects
+namespace ComputerAssistedRoleplay.Model.Weapons.Affliction
 {
     /// <summary>
     /// Interface for creating weapon status effects
     /// </summary>
-    public interface IStatusEffects
+    public interface ICauseAfflictions
     {
         /// <summary>
         /// Applies a status effect on a character
         /// </summary>
         /// <param name="CS">The character the statuseffect is applied on</param>
-        void ApplyEffectOn(CharacterSheet CS);
+        void AddAfflictionTo(DamageItem damageItem);
 
         /// <summary>
         /// Returns a Description of the Statuseffect
         /// </summary>
         /// <returns>Description</returns>
         string effectDesc();
+
+        /// <summary>
+        /// Returns the Type of affliction
+        /// </summary>
+        /// <returns></returns>
+        AvailableAfflictions getAfflictionType();
     }
 
     /// <summary>
     /// Available Statuseffects
     /// </summary>
-    enum AvailableStatusEffets
+    public enum AvailableAfflictions
     {
         Bleed,
         Unconsciousness,

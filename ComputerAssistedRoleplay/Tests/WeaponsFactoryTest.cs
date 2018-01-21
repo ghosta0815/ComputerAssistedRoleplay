@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using NUnit.Framework;
 using ComputerAssistedRoleplay.Model.Weapons;
-using ComputerAssistedRoleplay.Model.Weapons.StatusEffects;
+using ComputerAssistedRoleplay.Model.Weapons.Affliction;
 
 namespace ComputerAssistedRoleplay.Tests
 {
@@ -77,7 +77,7 @@ namespace ComputerAssistedRoleplay.Tests
 
             foreach(string weapID in WeapFab.AvailableWeapons)
             {
-                foreach(IStatusEffects effect in WeapFab.getWeapon(weapID).StatusEffects)
+                foreach(ICauseAfflictions effect in WeapFab.getWeapon(weapID).Afflictions)
                 {
                     if (effect != null)
                     {
