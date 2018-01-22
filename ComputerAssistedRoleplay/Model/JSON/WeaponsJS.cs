@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using Newtonsoft.Json;
 
 namespace ComputerAssistedRoleplay.Model.JSON
 {
@@ -15,12 +16,25 @@ namespace ComputerAssistedRoleplay.Model.JSON
 
     public class SingleWeaponJS
     {
+        [JsonProperty("Name")]
         public string Name { set; get; } = "";
-        public int PierceDamage { set; get; } = 0;
-        public int BashDamage { set; get; } = 0;
-        public int CutDamage { set; get; } = 0;
+
+        [JsonProperty("PierceDamage")]
+        public string PierceDamageString { set; get; } = "";
+
+        [JsonProperty("BashDamage")]
+        public string BashDamageString { set; get; } = "";
+
+        [JsonProperty("CutDamage")]
+        public string CutDamageString { set; get; } = "";
+
+        [JsonProperty("Weight")]
         public int Weight { set; get; } = 0;
+
+        [JsonProperty("Length")]
         public int Length { set; get; } = 0;
+
+        [JsonProperty("StatusEffects")]
         public List<string> StatusEffects { get; set; } = new List<string>();
 
     }

@@ -43,5 +43,29 @@ namespace ComputerAssistedRoleplay.Model.RandomGenerator
 
             return resultSum + Adder;
         }
+
+        /// <summary>
+        /// OVerrides the toString method and returns a string representation of the thrown dice
+        /// </summary>
+        /// <returns>string of the form 2w5+1</returns>
+        public override string ToString()
+        {
+            string diceString = "";
+            if(Amount == 0 || Sides == 0)
+            {
+                return diceString = Adder.ToString();
+            }
+
+            diceString += Amount.ToString() + "w" + Sides.ToString();
+            if(Adder != 0 )
+            {
+                if (Adder > 0 )
+                {
+                    diceString += "+";
+                }
+                diceString += Adder.ToString();
+            }
+            return diceString;
+        }
     }
 }

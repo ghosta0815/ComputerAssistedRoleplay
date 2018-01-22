@@ -59,21 +59,31 @@ namespace ComputerAssistedRoleplay.Tests
         }
 
         [TestCase]
-        public void WeaponVariablesInitialized()
+        public void WeaponDamageDiceAreValid()
         {
-            Weapon weap = WeapFab.getWeapon(WeapFab.AvailableWeapons[0]);
-
-            Assert.Multiple(() =>
+            bool containsAtLeastOneValidDie = false;
+            foreach(string weaponName in WeapFab.AvailableWeapons)
             {
-                Assert.NotZero(weap.BashDamage + weap.CutDamage + weap.PierceDamage);
-                Assert.AreNotEqual(weap.Name, "");
-            });
+                Weapon weapUnderEval = WeapFab.getWeapon(weaponName);
+                TestContext.WriteLine(weapUnderEval.Name + " \t- Bash: " + weapUnderEval.BashDamage.ToString() + 
+                    " - Pierce: " + weapUnderEval.PierceDamage.ToString() +
+                    " - Cut: " + weapUnderEval.CutDamage.ToString());
+
+                if(weapUnderEval.BashDamage.ToString() != "0" 
+                    | weapUnderEval.CutDamage.ToString() != "0" 
+                    | weapUnderEval.PierceDamage.ToString() != "0")
+                {
+                    containsAtLeastOneValidDie = true;
+                }
+            }
+
+            Assert.True(containsAtLeastOneValidDie);
         }
         
         [TestCase]
         public void WeaponAppliesStatusEffects()
         {
-            bool weaponContainsStatusEffects = false;
+            bool containsAtLeastOneEffect = false;
 
             foreach(string weapID in WeapFab.AvailableWeapons)
             {
@@ -81,13 +91,13 @@ namespace ComputerAssistedRoleplay.Tests
                 {
                     if (effect != null)
                     {
-                        weaponContainsStatusEffects = true;
+                        containsAtLeastOneEffect = true;
                         TestContext.WriteLine("{0}: {1}", weapID, effect.GetType().ToString());
                     }
                 }
             }
 
-            Assert.IsTrue(weaponContainsStatusEffects);
+            Assert.IsTrue(containsAtLeastOneEffect);
         }
     }
 }

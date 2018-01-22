@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using ComputerAssistedRoleplay.Model.JSON;
 using ComputerAssistedRoleplay.Model.Weapons.Affliction;
+using ComputerAssistedRoleplay.Model.RandomGenerator;
 
 namespace ComputerAssistedRoleplay.Model.Weapons
 {
@@ -19,17 +20,17 @@ namespace ComputerAssistedRoleplay.Model.Weapons
         /// <summary>
         /// The Piercing Damage the weapon is inflicting
         /// </summary>
-        public int PierceDamage { get; set; } = 0;
-
+        public Dice PierceDamage { get; set; }
+    
         /// <summary>
         /// The Bash Damage the weapon is inflicting
         /// </summary>
-        public int BashDamage { get; set; } = 0;
+        public Dice BashDamage { get; set; }
 
         /// <summary>
         /// The Cutting Damage the weapon is inflicting
         /// </summary>
-        public int CutDamage { get; set; } = 0;
+        public Dice CutDamage { get; set; }
 
         /// <summary>
         /// Total weight of the weapon in g
@@ -65,9 +66,9 @@ namespace ComputerAssistedRoleplay.Model.Weapons
         public Weapon()
         {
             Name = "Undefined";
-            PierceDamage = 0;
-            BashDamage = 0;
-            CutDamage = 0;
+            PierceDamage = new Dice(0, 0, 0);
+            BashDamage = new Dice(0, 0, 0);
+            CutDamage = new Dice(0, 0, 0);
         }
 
         /// <summary>
@@ -76,10 +77,12 @@ namespace ComputerAssistedRoleplay.Model.Weapons
         /// <param name="weaponJS">JSON Object to create the Weapon with</param>
         public Weapon(SingleWeaponJS weaponJS)
         {
+            DiceInterpreter weaponDamageConverter = new DiceInterpreter();
+
             Name = weaponJS.Name;
-            PierceDamage = weaponJS.PierceDamage;
-            BashDamage = weaponJS.BashDamage;
-            CutDamage = weaponJS.CutDamage;
+            PierceDamage = weaponDamageConverter.getDice(weaponJS.PierceDamageString);
+            BashDamage = weaponDamageConverter.getDice(weaponJS.BashDamageString);
+            CutDamage = weaponDamageConverter.getDice(weaponJS.CutDamageString);
             Length = weaponJS.Length;
             Weight = weaponJS.Weight;
 
@@ -113,8 +116,8 @@ namespace ComputerAssistedRoleplay.Model.Weapons
             string desc = "";
             desc += "Name: " + Name + "\r\n";
             desc += "Schnittschaden: " + CutDamage + "\r\n";
-            desc += "Wuchtschaden:" + BashDamage + "\r\n";
-            desc += "Stichschaden:" + PierceDamage + "\r\n";
+            desc += "Wuchtschaden: " + BashDamage + "\r\n";
+            desc += "Stichschaden: " + PierceDamage + "\r\n";
             desc += "Gewicht: " + Weight + " g\r\n";
             desc += "Länge: " + Length + " cm\r\n";
             desc += "Waffenreichweite: " + AttackRange + " cm\r\n";

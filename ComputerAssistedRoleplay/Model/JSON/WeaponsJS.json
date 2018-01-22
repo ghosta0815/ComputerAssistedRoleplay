@@ -1,9 +1,9 @@
 ﻿{
   "Hammer": {
     "Name": "Hammer",
-    "PierceDamage": 0,
-    "BashDamage": 10,
-    "CutDamage": 1,
+    "PierceDamage": "1w3",
+    "BashDamage": "2w6",
+    "CutDamage": "1",
     "Weight": 1000,
     "Length": 40,
     "StatusEffects": [
@@ -13,9 +13,9 @@
   },
   "Messer": {
     "Name": "Messer",
-    "PierceDamage": 6,
-    "BashDamage": 2,
-    "CutDamage": 4,
+    "PierceDamage": "2w4",
+    "BashDamage": "1w2",
+    "CutDamage": "1w3+1",
     "Weight": 500,
     "Length": 35,
     "StatusEffects": [
@@ -24,9 +24,9 @@
   },
     "Speer": {
     "Name": "Speer",
-    "PierceDamage": 10,
-    "BashDamage": 2,
-    "CutDamage": 0,
+    "PierceDamage": "2w6+2",
+    "BashDamage": "1w2",
+    "CutDamage": "1w2",
     "Weight": 800,
     "Length": 220,
     "StatusEffects": [
@@ -35,9 +35,9 @@
   },
     "Langschwert": {
     "Name": "Langschwert",
-    "PierceDamage": 6,
-    "BashDamage": 8,
-    "CutDamage": 14,
+    "PierceDamage": "1w6",
+    "BashDamage": "1w8+1",
+    "CutDamage": "2w6+2",
     "Weight": 1200,
     "Length": 140,
     "StatusEffects": [

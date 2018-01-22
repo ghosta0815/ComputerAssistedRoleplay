@@ -30,7 +30,7 @@ namespace ComputerAssistedRoleplay.Controller
         /// <param name="pierceDamage">Piwrce Damage of the Weapon</param>
         /// <param name="bashDamage">Bashing Damage of the Weapon</param>
         /// <param name="cutDamage">Cutting Damage of the Weapon</param>
-        void DisplayAllWeapons(List<string> name, List<int> cutDamage, List<int> pierceDamage, List<int> bashDamage, List<int> weight, List<int> length);
+        void DisplayAllWeapons(List<string> name, List<string> cutDamage, List<string> pierceDamage, List<string> bashDamage, List<int> weight, List<int> length);
 
         /// <summary>
         /// Shows a detailed view of the selected Weapon
@@ -84,18 +84,18 @@ namespace ComputerAssistedRoleplay.Controller
         private void DeliverWeaponsToView()
         {
             List<string> weapNames = new List<string>();
-            List<int> weapBashDamages = new List<int>();
-            List<int> weapCutDamages = new List<int>();
-            List<int> weapPierceDamages = new List<int>();
+            List<string> weapBashDamages = new List<string>();
+            List<string> weapCutDamages = new List<string>();
+            List<string> weapPierceDamages = new List<string>();
             List<int> weapWeights = new List<int>();
             List<int> weapLengths = new List<int>();
 
             foreach (string weapID in _weapFab.AvailableWeapons)
             {
                 weapNames.Add(weapID);
-                weapBashDamages.Add(_weapFab.getWeapon(weapID).BashDamage);
-                weapCutDamages.Add(_weapFab.getWeapon(weapID).CutDamage);
-                weapPierceDamages.Add(_weapFab.getWeapon(weapID).PierceDamage);
+                weapBashDamages.Add(_weapFab.getWeapon(weapID).BashDamage.ToString());
+                weapCutDamages.Add(_weapFab.getWeapon(weapID).CutDamage.ToString());
+                weapPierceDamages.Add(_weapFab.getWeapon(weapID).PierceDamage.ToString());
                 weapWeights.Add(_weapFab.getWeapon(weapID).Weight);
                 weapLengths.Add(_weapFab.getWeapon(weapID).Length);
             }

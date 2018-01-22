@@ -42,7 +42,7 @@ namespace ComputerAssistedRoleplay.View
         /// <param name="bashDamage">List of Bashing damages of the weapons</param>
         /// <param name="weight">List of weapon weights</param>
         /// <param name="length">List of weapon lengths</param>
-        public void DisplayAllWeapons(List<string> name, List<int> cutDamage, List<int> pierceDamage, List<int> bashDamage, List<int> weight, List<int> length)
+        public void DisplayAllWeapons(List<string> name, List<string> cutDamage, List<string> pierceDamage, List<string> bashDamage, List<int> weight, List<int> length)
         {
             WeaponsClearGrid();
 

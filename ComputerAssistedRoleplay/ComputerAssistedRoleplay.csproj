@@ -92,6 +92,7 @@
     <Compile Include="Model\Logging\Log.cs" />
     <Compile Include="Model\Weapons\Weapon.cs" />
     <Compile Include="Tests\DiceInterpreterTest.cs" />
+    <Compile Include="Tests\DiceTest.cs" />
     <Compile Include="Tests\LogTest.cs" />
     <Compile Include="Tests\RNGTest.cs" />
     <Compile Include="Tests\WeaponsFactoryTest.cs" />

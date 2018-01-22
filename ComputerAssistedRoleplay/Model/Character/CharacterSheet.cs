@@ -17,6 +17,22 @@ namespace ComputerAssistedRoleplay.Model.Character
             Status = new StatusSheet(this);
         }
 
+        public void Attack(CharacterSheet enemyCS)
+        {
+            //Calculate if character hits
+
+            SingleHitZone hitBodyPart = enemyCS.Hitzone.randomizeHitzone();
+            DamageItem damage = new DamageItem(hitBodyPart);
+
+            damage.Pierce = EquippedWeapon.PierceDamage.Throw() ;
+            damage.Cut = EquippedWeapon.CutDamage.Throw();
+            damage.Bash = EquippedWeapon.BashDamage.Throw();
+
+            damage.Afflictions.AddRange(EquippedWeapon.Afflictions);
+
+            enemyCS.ProcessHit(damage);
+        }
+
         /// <summary>
         /// Processes a hit by a weapon
         /// </summary>
@@ -27,22 +43,6 @@ namespace ComputerAssistedRoleplay.Model.Character
             //Substract Hitpoints for Cut
             //Substract Hitpoints for Pierce
             Status.AddAfflictions(hit.Afflictions);
-        }
-
-        public void Attack(CharacterSheet enemyCS)
-        {
-            //Calculate if character hits
-
-            SingleHitZone hitBodyPart = enemyCS.Hitzone.randomizeHitzone();
-            DamageItem damage = new DamageItem(hitBodyPart);
-
-            //When Weapons support 1w6 evaluation calculate the concrete hitdamages here
-            damage.Pierce = EquippedWeapon.PierceDamage;
-            damage.Cut = EquippedWeapon.CutDamage;
-            damage.Bash = EquippedWeapon.BashDamage;
-            damage.Afflictions.AddRange(EquippedWeapon.Afflictions);
-
-            enemyCS.ProcessHit(damage);
         }
     }
 }
