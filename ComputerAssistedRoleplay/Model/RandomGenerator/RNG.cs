@@ -31,10 +31,18 @@ namespace ComputerAssistedRoleplay.Model.RandomGenerator
         /// </summary>
         /// <param name="maxEyes">maximum Amount of eyes</param>
         /// <returns>Random number</returns>
-        public int throwDiceWithSides(int maxEyes)
+        internal int throwDiceWithSides(int maxEyes)
         {
-            maxEyes = Math.Abs(maxEyes);
-            return rand.Next(maxEyes) + 1;
+            if(maxEyes == 0)
+            {
+                return 0;
+            }
+            else
+            {
+                maxEyes = Math.Abs(maxEyes);
+                return rand.Next(1, maxEyes + 1);
+            }
+
         }
     }
 }

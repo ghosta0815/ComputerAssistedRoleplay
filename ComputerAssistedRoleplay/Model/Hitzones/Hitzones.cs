@@ -95,7 +95,9 @@ namespace ComputerAssistedRoleplay.Model.Hitzone
         /// <returns>Bodypart that got hit</returns>
         public SingleHitZone randomizeHitzone()
         {
-            int diceThrow = RNG.Instance.throwDiceWithSides(TotalZonePoints);
+            Dice hitZoneDice = new Dice(1, TotalZonePoints, 0);
+
+            int diceThrow = hitZoneDice.Throw();
 
             foreach(SingleHitZone bodypart in Bodyparts)
             {
