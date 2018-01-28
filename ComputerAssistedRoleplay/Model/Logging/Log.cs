@@ -98,10 +98,11 @@ namespace ComputerAssistedRoleplay.Model.Logging
         /// Appends a Textstring to the Log and notifies observers about the added Values
         /// </summary>
         /// <param name="textToAppend">The Text to append to the Log</param>
-        public void Append(string textToAppend)
+        public void Append(string valueToAppend, params Object[] args)
         {
-            Text = Text + textToAppend + "\r\n";
-            textHandler.Invoke(this, new LogEventArgs(Text, textToAppend, false));
+            string stringToAppend = String.Format(valueToAppend, args);
+            Text = Text + stringToAppend + "\r\n";
+            textHandler.Invoke(this, new LogEventArgs(Text, stringToAppend, false));
         }
 
         /// <summary>
