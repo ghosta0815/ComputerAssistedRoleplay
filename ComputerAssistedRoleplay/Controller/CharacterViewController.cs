@@ -11,6 +11,10 @@ namespace ComputerAssistedRoleplay.Controller
         /// <param name="controller">Instance of the controller that is operating the view</param>
         void SetController(CharacterViewController controller);
 
+        /// <summary>
+        /// Displays the Status of the Character in the view
+        /// </summary>
+        /// <param name="hitpoints"></param>
         void DisplayStatus(int hitpoints);
     }
 
@@ -36,6 +40,10 @@ namespace ComputerAssistedRoleplay.Controller
             this.LoadView();
         }
 
+        /// <summary>
+        /// Sets the Hitpoints of the Caracter in the Model
+        /// </summary>
+        /// <param name="newHitpoints"></param>
         internal void SetHitpoints(int newHitpoints)
         {
             _character.Status.Hitpoints = newHitpoints;

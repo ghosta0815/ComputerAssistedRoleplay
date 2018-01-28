@@ -11,17 +11,10 @@ namespace ComputerAssistedRoleplay.Model.Character.StatusEffect
     internal class StatusFactory
     {
         /// <summary>
-        /// CharacterSheet the affliction is applied on
-        /// </summary>
-        internal CharacterSheet Character { get; }
-
-        /// <summary>
         /// Creates a new instance of the status factory
         /// </summary>
-        /// <param name="character">The character the factory is associated with</param>
-        internal StatusFactory(CharacterSheet character)
+        internal StatusFactory()
         {
-            Character = character;
         }
 
         /// <summary>

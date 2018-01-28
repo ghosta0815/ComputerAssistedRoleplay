@@ -114,9 +114,9 @@ namespace ComputerAssistedRoleplay.Model.Character
 
         private StatusFactory StatusFab;
 
-        public StatusSheet(CharacterSheet character)
+        public StatusSheet()
         {
-            StatusFab = new StatusFactory(character);
+            StatusFab = new StatusFactory();
         }
 
         /// <summary>
@@ -145,7 +145,8 @@ namespace ComputerAssistedRoleplay.Model.Character
             }
         }
 
-        public event StatusSheetHandler<IStatus> statusHandler = delegate { };
+        #region Events
+        public event StatusSheetHandler<StatusSheet> statusHandler = delegate { };
 
         /// <summary>
         /// Fires the Status Changed event
@@ -163,7 +164,7 @@ namespace ComputerAssistedRoleplay.Model.Character
         /// <param name="iso"></param>
         public void Subscribe(IStatusObserver iso)
         {
-            statusHandler += new StatusSheetHandler<IStatus>(iso.statusChanged);
+            statusHandler += new StatusSheetHandler<StatusSheet>(iso.statusChanged);
         }
 
         /// <summary>
@@ -172,7 +173,8 @@ namespace ComputerAssistedRoleplay.Model.Character
         /// <param name="iso"></param>
         public void UnSubscribe(IStatusObserver iso)
         {
-            statusHandler -= new StatusSheetHandler<IStatus>(iso.statusChanged);
+            statusHandler -= new StatusSheetHandler<StatusSheet>(iso.statusChanged);
         }
+        #endregion
     }
 }

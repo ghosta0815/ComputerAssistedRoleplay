@@ -14,7 +14,7 @@ namespace ComputerAssistedRoleplay.Model.Character
         {
             Hitzone = hitzone;
             EquippedWeapon = defaultWeapon;
-            Status = new StatusSheet(this);
+            Status = new StatusSheet();
         }
 
         /// <summary>
