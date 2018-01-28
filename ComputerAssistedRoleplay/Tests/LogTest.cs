@@ -29,6 +29,19 @@ namespace ComputerAssistedRoleplay.Tests
             CombatLog.getInstance.Append(testString);
             Assert.AreEqual(testString, CombatLog.getInstance.Text.Trim());
         }
+        /// <summary>
+        /// Test if text can be added to the Log
+        /// </summary>
+        [TestCase]
+        public void CanAddCompositeText()
+        {
+            string testString = "Hello World";
+
+            CombatLog.getInstance.Clear();
+            CombatLog.getInstance.Append("{0} {1}", "Hello", "World");
+            Assert.AreEqual(testString, CombatLog.getInstance.Text.Trim());
+        }
+
 
         /// <summary>
         /// Test if the Log can be cleared, after Text is added

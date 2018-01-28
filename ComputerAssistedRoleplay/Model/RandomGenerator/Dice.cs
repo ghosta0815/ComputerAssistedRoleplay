@@ -11,9 +11,9 @@ namespace ComputerAssistedRoleplay.Model.RandomGenerator
     /// </summary>
     public class Dice
     {
-        int Amount { get; set; } 
-        int Sides { get; set; }
-        int Adder { get; set; }
+        public int Amount { get; set; }
+        public int Sides { get; set; }
+        public int Adder { get; set; }
 
         /// <summary>
         /// Constructor of a collection of dice (e.g. 3w5+3)

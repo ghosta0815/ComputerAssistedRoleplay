@@ -66,11 +66,11 @@ namespace ComputerAssistedRoleplay.Tests
                     eyesGotThrown.Add(eyes, false);
                 }
 
-                int maxTests = 100;
+                int maxTests = testDie.Amount * testDie.Sides * 100 + 1;
                 for (int throwIndex = 0; throwIndex < maxTests; throwIndex++)
                 {
                     int thrownEyes = testDie.Throw();
-                    TestContext.WriteLine("Throw {0} on {1}\t Result:{2}", throwIndex, testDie.ToString(), thrownEyes);
+                    TestContext.WriteLine("Attempt {0}:\t {1}\t Result:{2}", throwIndex, testDie.ToString(), thrownEyes);
                     eyesGotThrown[thrownEyes] = true;
 
                     if (!eyesGotThrown.ContainsValue(false))

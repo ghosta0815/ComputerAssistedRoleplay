@@ -27,13 +27,7 @@ namespace ComputerAssistedRoleplay.Model.Character
             //Currently we always hit
 
             SingleHitZone hitBodyPart = enemyCS.Hitzone.randomizeHitzone();
-            DamageItem damage = new DamageItem(hitBodyPart);
-
-            damage.Pierce = EquippedWeapon.PierceDamage.Throw() ;
-            damage.Cut = EquippedWeapon.CutDamage.Throw();
-            damage.Bash = EquippedWeapon.BashDamage.Throw();
-
-            damage.Afflictions.AddRange(EquippedWeapon.Afflictions);
+            DamageItem damage = new DamageItem(hitBodyPart, EquippedWeapon);
 
             enemyCS.ProcessHit(damage);
         }

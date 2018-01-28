@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using ComputerAssistedRoleplay.Model.Weapons;
 using ComputerAssistedRoleplay.Model.Weapons.Affliction;
 using ComputerAssistedRoleplay.Model.Hitzone;
 
@@ -16,9 +17,19 @@ namespace ComputerAssistedRoleplay.Model.Character
         SingleHitZone HitBodyPart { get; set; }
         public List<ICauseAfflictions> Afflictions { get; set; } = new List<ICauseAfflictions>();
 
-        public DamageItem(SingleHitZone hitBodyPart)
+        /// <summary>
+        /// Constructor of the Damageitem
+        /// </summary>
+        /// <param name="hitBodyPart">Bodypart that got hit</param>
+        /// <param name="weaponThatHit">Weapon that hit the Target</param>
+        public DamageItem(SingleHitZone hitBodyPart, Weapon weaponThatHit)
         {
             HitBodyPart = hitBodyPart;
+            Pierce = weaponThatHit.InflictPierceDamage();
+            Bash = weaponThatHit.InflictBashDamage();
+            Cut = weaponThatHit.InflictCutDamage();
+
+            Afflictions.AddRange(weaponThatHit.Afflictions);
         }
     }
 }

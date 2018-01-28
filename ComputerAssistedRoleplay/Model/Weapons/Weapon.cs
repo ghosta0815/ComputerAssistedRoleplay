@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using ComputerAssistedRoleplay.Model.JSON;
 using ComputerAssistedRoleplay.Model.Weapons.Affliction;
 using ComputerAssistedRoleplay.Model.RandomGenerator;
+using ComputerAssistedRoleplay.Model.Logging;
 
 namespace ComputerAssistedRoleplay.Model.Weapons
 {
@@ -59,7 +60,6 @@ namespace ComputerAssistedRoleplay.Model.Weapons
         public List<ICauseAfflictions> Afflictions { get; set; } = new List<ICauseAfflictions>();
         #endregion
 
-        #region Constructors
         /// <summary>
         /// Default Constructor for a weapon object. All Variables must be set manually
         /// </summary>
@@ -108,6 +108,39 @@ namespace ComputerAssistedRoleplay.Model.Weapons
         }
 
         /// <summary>
+        /// Throws the inflicted Pierce Damage
+        /// </summary>
+        /// <returns></returns>
+        internal int InflictPierceDamage()
+        {
+            int damage = PierceDamage.Throw();
+            CombatLog.getInstance.Append("{0}: Stichschaden {1} auf {2}", Name, damage, PierceDamage);
+            return damage;
+        }
+
+        /// <summary>
+        /// Throws the inflicted Cut Damage
+        /// </summary>
+        /// <returns></returns>
+        internal int InflictCutDamage()
+        {
+            int damage = CutDamage.Throw();
+            CombatLog.getInstance.Append("{0}: Schnittschaden {1} auf {2}", Name, damage, CutDamage);
+            return damage;
+        }
+
+        /// <summary>
+        /// Throws the inflicted Bash damage
+        /// </summary>
+        /// <returns></returns>
+        internal int InflictBashDamage()
+        {
+            int damage = BashDamage.Throw();
+            CombatLog.getInstance.Append("{0}: Wuchtschaden {1} auf {2}", Name, damage, BashDamage);
+            return damage;
+        }
+
+        /// <summary>
         /// Overrides ToString method for detailed display of the Object
         /// </summary>
         /// <returns>Description of the Object</returns>
@@ -130,6 +163,5 @@ namespace ComputerAssistedRoleplay.Model.Weapons
 
             return desc;
         }
-        #endregion
     }
 }
