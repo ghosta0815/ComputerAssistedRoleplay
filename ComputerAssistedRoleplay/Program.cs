@@ -16,7 +16,7 @@ namespace ComputerAssistedRoleplay
         /// </summary>
         [STAThread]
         static void Main()
-        {
+       {
             MainWindowView view = new MainWindowView();
             view.Visible = false;
 

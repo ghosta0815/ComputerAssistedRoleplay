@@ -14,14 +14,11 @@ namespace ComputerAssistedRoleplay.View
 {
     public partial class MainWindowView : Form, IMainWindowView
     {
-        #region Variables
         /// <summary>
         /// The controller that handles the view
         /// </summary>
         private MainWindowController _controller;
-        #endregion
 
-        #region Constructors
         /// <summary>
         /// Creates a new Instance of the Main Window View
         /// </summary>
@@ -29,9 +26,7 @@ namespace ComputerAssistedRoleplay.View
         {
             InitializeComponent();
         }
-        #endregion
 
-        #region Methods
         /// <summary>
         /// Sets the controller of the Current view
         /// </summary>
@@ -57,7 +52,6 @@ namespace ComputerAssistedRoleplay.View
                 this.LogTextBox.AppendText(e.NewLogEntry + "\r\n");
             }
         }
-        #endregion
 
         #region ButtonEvents
         /// <summary>
@@ -160,6 +154,40 @@ namespace ComputerAssistedRoleplay.View
         private void throwDiceStringCmd_Click(object sender, EventArgs e)
         {
             _controller.throwDiceString(diceStringTextBox.Text);
+        }
+
+        /// <summary>
+        /// Opens the Player character window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void PlayerSheetBtn_Click(object sender, EventArgs e)
+        {
+            CharacterView playerView = new CharacterView();
+            playerView.Text = "Spieler";
+            playerView.Visible = false;
+
+            _controller.setPlayerController(playerView);
+
+            this.Enabled = true;
+            playerView.Show(this);
+        }
+
+        /// <summary>
+        /// Opens the enemy character window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void EnemySheetBtn_Click(object sender, EventArgs e)
+        {
+            CharacterView enemyView = new CharacterView();
+            enemyView.Text = "Gegner";
+            enemyView.Visible = false;
+
+            _controller.setEnemyController(enemyView);
+
+            this.Enabled = true;
+            enemyView.Show(this);
         }
         #endregion
     }

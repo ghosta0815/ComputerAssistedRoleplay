@@ -38,6 +38,8 @@
             this.throw1w20Cmd = new System.Windows.Forms.Button();
             this.diceStringTextBox = new System.Windows.Forms.TextBox();
             this.throwDiceStringCmd = new System.Windows.Forms.Button();
+            this.PlayerSheetBtn = new System.Windows.Forms.Button();
+            this.EnemySheetBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // HitZoneWindowCmd
@@ -140,6 +142,26 @@
             this.throwDiceStringCmd.UseVisualStyleBackColor = true;
             this.throwDiceStringCmd.Click += new System.EventHandler(this.throwDiceStringCmd_Click);
             // 
+            // PlayerSheetBtn
+            // 
+            this.PlayerSheetBtn.Location = new System.Drawing.Point(428, 13);
+            this.PlayerSheetBtn.Name = "PlayerSheetBtn";
+            this.PlayerSheetBtn.Size = new System.Drawing.Size(75, 23);
+            this.PlayerSheetBtn.TabIndex = 0;
+            this.PlayerSheetBtn.Text = "Spieler";
+            this.PlayerSheetBtn.UseVisualStyleBackColor = true;
+            this.PlayerSheetBtn.Click += new System.EventHandler(this.PlayerSheetBtn_Click);
+            // 
+            // EnemySheetBtn
+            // 
+            this.EnemySheetBtn.Location = new System.Drawing.Point(428, 42);
+            this.EnemySheetBtn.Name = "EnemySheetBtn";
+            this.EnemySheetBtn.Size = new System.Drawing.Size(75, 23);
+            this.EnemySheetBtn.TabIndex = 0;
+            this.EnemySheetBtn.Text = "Gegner";
+            this.EnemySheetBtn.UseVisualStyleBackColor = true;
+            this.EnemySheetBtn.Click += new System.EventHandler(this.EnemySheetBtn_Click);
+            // 
             // MainWindowView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -154,6 +176,8 @@
             this.Controls.Add(this.WeaponWindowCmd);
             this.Controls.Add(this.ClearLogCmd);
             this.Controls.Add(this.LogTextBox);
+            this.Controls.Add(this.EnemySheetBtn);
+            this.Controls.Add(this.PlayerSheetBtn);
             this.Controls.Add(this.HitZoneWindowCmd);
             this.Name = "MainWindowView";
             this.Text = "MainWindow";
@@ -175,5 +199,7 @@
         private System.Windows.Forms.Button throw1w20Cmd;
         private System.Windows.Forms.TextBox diceStringTextBox;
         private System.Windows.Forms.Button throwDiceStringCmd;
+        private System.Windows.Forms.Button PlayerSheetBtn;
+        private System.Windows.Forms.Button EnemySheetBtn;
     }
 }

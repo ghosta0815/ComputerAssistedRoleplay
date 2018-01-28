@@ -39,7 +39,7 @@ namespace ComputerAssistedRoleplay.Model.Logging
     }
 
     /// <summary>
-    /// The Interface every observer must Implement
+    /// The Interface every observer must Implement if they want to get notified about Log changes
     /// </summary>
     public interface ILogObserver
     {
@@ -101,10 +101,7 @@ namespace ComputerAssistedRoleplay.Model.Logging
         public void Append(string textToAppend)
         {
             Text = Text + textToAppend + "\r\n";
-            if (textHandler != null)
-            {
-                textHandler.Invoke(this, new LogEventArgs(Text, textToAppend, false));
-            }
+            textHandler.Invoke(this, new LogEventArgs(Text, textToAppend, false));
         }
 
         /// <summary>
@@ -124,7 +121,7 @@ namespace ComputerAssistedRoleplay.Model.Logging
         /// <summary>
         /// Occurs when the Text of the log changes.
         /// </summary>
-        public event LogHandler<CombatLog> textHandler;
+        public event LogHandler<CombatLog> textHandler = delegate { };
 
         /// <summary>
         /// Subscribe if you want to get notified about changes to the Log

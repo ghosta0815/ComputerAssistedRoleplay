@@ -69,6 +69,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\CharacterViewController.cs" />
     <Compile Include="Controller\HitzoneViewController.cs" />
     <Compile Include="Controller\MainWindowController.cs" />
     <Compile Include="Controller\WeaponViewController.cs" />
@@ -96,6 +97,12 @@
     <Compile Include="Tests\LogTest.cs" />
     <Compile Include="Tests\RNGTest.cs" />
     <Compile Include="Tests\WeaponsFactoryTest.cs" />
+    <Compile Include="View\CharacterView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\CharacterView.Designer.cs">
+      <DependentUpon>CharacterView.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\HitzoneView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,6 +129,9 @@
     <Compile Include="View\WeaponsView.Designer.cs">
       <DependentUpon>WeaponsView.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="View\CharacterView.resx">
+      <DependentUpon>CharacterView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\HitzoneView.resx">
       <DependentUpon>HitzoneView.cs</DependentUpon>
     </EmbeddedResource>

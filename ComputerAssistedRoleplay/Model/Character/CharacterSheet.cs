@@ -8,7 +8,7 @@ namespace ComputerAssistedRoleplay.Model.Character
     {
         public Hitzones Hitzone { get; set; }
         public Weapon EquippedWeapon { get; set; }
-        private StatusSheet Status;
+        public StatusSheet Status { get; }
 
         public CharacterSheet(Hitzones hitzone, Weapon defaultWeapon)
         {
@@ -17,9 +17,14 @@ namespace ComputerAssistedRoleplay.Model.Character
             Status = new StatusSheet(this);
         }
 
+        /// <summary>
+        /// Attacks another Character
+        /// </summary>
+        /// <param name="enemyCS">The Character to attack</param>
         public void Attack(CharacterSheet enemyCS)
         {
-            //Calculate if character hits
+            //Calculate if character hits (something like Attackchance vs agility)
+            //Currently we always hit
 
             SingleHitZone hitBodyPart = enemyCS.Hitzone.randomizeHitzone();
             DamageItem damage = new DamageItem(hitBodyPart);
@@ -42,6 +47,7 @@ namespace ComputerAssistedRoleplay.Model.Character
             //Substract Hitpoints for Bash
             //Substract Hitpoints for Cut
             //Substract Hitpoints for Pierce
+            Status.DealDamage(hit.Bash + hit.Pierce + hit.Cut);
             Status.AddAfflictions(hit.Afflictions);
         }
     }
