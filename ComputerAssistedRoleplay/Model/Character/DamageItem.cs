@@ -25,9 +25,11 @@ namespace ComputerAssistedRoleplay.Model.Character
         public DamageItem(SingleHitZone hitBodyPart, Weapon weaponThatHit)
         {
             HitBodyPart = hitBodyPart;
-            Pierce = weaponThatHit.InflictPierceDamage();
-            Bash = weaponThatHit.InflictBashDamage();
-            Cut = weaponThatHit.InflictCutDamage();
+            int pierce, bash, cut;
+            weaponThatHit.InflictDamage(out pierce, out bash, out cut);
+            Pierce = pierce;
+            Bash = bash;
+            Cut = cut;
 
             Afflictions.AddRange(weaponThatHit.Afflictions);
         }

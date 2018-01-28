@@ -108,36 +108,18 @@ namespace ComputerAssistedRoleplay.Model.Weapons
         }
 
         /// <summary>
-        /// Throws the inflicted Pierce Damage
+        /// Inflicts Damage of the Weapon
         /// </summary>
-        /// <returns></returns>
-        internal int InflictPierceDamage()
+        /// <param name="pierce">Piercing Damage the weapon inflicts</param>
+        /// <param name="bash">Bashing Damage the weapon inflicts</param>
+        /// <param name="cut">Cutting Damage the weapon inflicts</param>
+        internal void InflictDamage(out int pierce, out int bash, out int cut)
         {
-            int damage = PierceDamage.Throw();
-            CombatLog.getInstance.Append("{0}: Stichschaden {1} auf {2}", Name, damage, PierceDamage);
-            return damage;
-        }
+            pierce = PierceDamage.Throw();
+            bash = BashDamage.Throw();
+            cut = CutDamage.Throw();
 
-        /// <summary>
-        /// Throws the inflicted Cut Damage
-        /// </summary>
-        /// <returns></returns>
-        internal int InflictCutDamage()
-        {
-            int damage = CutDamage.Throw();
-            CombatLog.getInstance.Append("{0}: Schnittschaden {1} auf {2}", Name, damage, CutDamage);
-            return damage;
-        }
-
-        /// <summary>
-        /// Throws the inflicted Bash damage
-        /// </summary>
-        /// <returns></returns>
-        internal int InflictBashDamage()
-        {
-            int damage = BashDamage.Throw();
-            CombatLog.getInstance.Append("{0}: Wuchtschaden {1} auf {2}", Name, damage, BashDamage);
-            return damage;
+            CombatLog.getInstance.Append("{0} verursacht {1}/{2}/{3} = {4} Trefferpunkte", Name, pierce, bash, cut, pierce + bash + cut);
         }
 
         /// <summary>
