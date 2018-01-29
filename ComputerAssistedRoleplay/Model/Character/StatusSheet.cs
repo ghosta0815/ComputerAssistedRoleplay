@@ -145,6 +145,24 @@ namespace ComputerAssistedRoleplay.Model.Character
             }
         }
 
+        public override string ToString()
+        {
+            string statusSummary = "";
+            statusSummary += "Lebenspunkte: " + Hitpoints;
+            statusSummary += "\r\nBewusstsein: " + Consciousness;
+            statusSummary += "\r\nSchmerz: " + Pain;
+            statusSummary += "\r\nBlut: " + Blood;
+            statusSummary += "\r\nLebt noch: " + !IsDead;
+            statusSummary += "\r\nStatuseffekte:\n";
+
+            foreach(IStatusEffect effect in AppliedEffects)
+            {
+                statusSummary += effect.ToString() + "\r\n";
+            }
+
+            return statusSummary;
+        }
+
         #region Events
         public event StatusSheetHandler<StatusSheet> statusHandler = delegate { };
 

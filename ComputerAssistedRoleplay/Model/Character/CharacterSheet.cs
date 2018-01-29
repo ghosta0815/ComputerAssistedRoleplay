@@ -44,5 +44,15 @@ namespace ComputerAssistedRoleplay.Model.Character
             Status.DealDamage(hit.Bash + hit.Pierce + hit.Cut);
             Status.AddAfflictions(hit.Afflictions);
         }
+
+        public override string ToString()
+        {
+            string characterDescription = "";
+            characterDescription += "Rasse: " + Hitzone.RaceName + "\r\n";
+            characterDescription += Status.ToString();
+            characterDescription += "\r\n";
+            characterDescription += "\r\nWaffe:\r\n" + EquippedWeapon.ToString();
+            return characterDescription;
+        }
     }
 }

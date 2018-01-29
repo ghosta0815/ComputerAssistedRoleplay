@@ -64,5 +64,10 @@ namespace ComputerAssistedRoleplay.View
         {
             this.HitPointsDisplay.Value = hitpoints;
         }
+
+        public void DisplayCharacterDescription(string characterDescription)
+        {
+            this.characterDescriptionTextBox.Text = characterDescription;
+        }
     }
 }

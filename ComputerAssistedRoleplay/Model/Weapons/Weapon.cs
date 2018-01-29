@@ -136,8 +136,6 @@ namespace ComputerAssistedRoleplay.Model.Weapons
             desc += "Gewicht: " + Weight + " g\r\n";
             desc += "Länge: " + Length + " cm\r\n";
             desc += "Waffenreichweite: " + AttackRange + " cm\r\n";
-            desc += "Statuseffekte:\r\n";
-            desc += "\r\n";
             foreach(ICauseAfflictions affliciton in Afflictions)
             {
                 desc += affliciton.effectDesc() + "\r\n";

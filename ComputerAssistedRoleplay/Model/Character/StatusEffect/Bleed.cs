@@ -20,7 +20,7 @@ namespace ComputerAssistedRoleplay.Model.Character.StatusEffect
 
         public string Description()
         {
-            throw new NotImplementedException();
+            return "Der Charakter blutet";
         }
     }
 }

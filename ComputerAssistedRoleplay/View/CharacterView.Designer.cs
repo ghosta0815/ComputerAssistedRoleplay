@@ -30,12 +30,13 @@
         {
             this.attackBtn = new System.Windows.Forms.Button();
             this.HitPointsDisplay = new System.Windows.Forms.NumericUpDown();
+            this.characterDescriptionTextBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.HitPointsDisplay)).BeginInit();
             this.SuspendLayout();
             // 
             // attackBtn
             // 
-            this.attackBtn.Location = new System.Drawing.Point(197, 13);
+            this.attackBtn.Location = new System.Drawing.Point(550, 13);
             this.attackBtn.Name = "attackBtn";
             this.attackBtn.Size = new System.Drawing.Size(75, 23);
             this.attackBtn.TabIndex = 0;
@@ -61,17 +62,28 @@
             this.HitPointsDisplay.TabIndex = 1;
             this.HitPointsDisplay.ValueChanged += new System.EventHandler(this.HitPointsDisplay_ValueChanged);
             // 
+            // characterDescriptionTextBox
+            // 
+            this.characterDescriptionTextBox.Location = new System.Drawing.Point(13, 40);
+            this.characterDescriptionTextBox.Multiline = true;
+            this.characterDescriptionTextBox.Name = "characterDescriptionTextBox";
+            this.characterDescriptionTextBox.ReadOnly = true;
+            this.characterDescriptionTextBox.Size = new System.Drawing.Size(484, 597);
+            this.characterDescriptionTextBox.TabIndex = 2;
+            // 
             // CharacterView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.ClientSize = new System.Drawing.Size(637, 649);
+            this.Controls.Add(this.characterDescriptionTextBox);
             this.Controls.Add(this.HitPointsDisplay);
             this.Controls.Add(this.attackBtn);
             this.Name = "CharacterView";
             this.Text = "CharacterView";
             ((System.ComponentModel.ISupportInitialize)(this.HitPointsDisplay)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -79,5 +91,6 @@
 
         private System.Windows.Forms.Button attackBtn;
         private System.Windows.Forms.NumericUpDown HitPointsDisplay;
+        private System.Windows.Forms.TextBox characterDescriptionTextBox;
     }
 }

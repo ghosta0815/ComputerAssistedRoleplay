@@ -16,6 +16,8 @@ namespace ComputerAssistedRoleplay.Controller
         /// </summary>
         /// <param name="hitpoints"></param>
         void DisplayStatus(int hitpoints);
+
+        void DisplayCharacterDescription(string characterDescription);
     }
 
     public class CharacterViewController
@@ -55,6 +57,7 @@ namespace ComputerAssistedRoleplay.Controller
         private void LoadView()
         {
             _view.DisplayStatus(_character.Status.Hitpoints);
+            _view.DisplayCharacterDescription(_character.ToString());
         }
 
         /// <summary>
