@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using ComputerAssistedRoleplay.Model.Character.StatusEffect;
 using ComputerAssistedRoleplay.Model.Weapons.Affliction;
@@ -129,6 +130,8 @@ namespace ComputerAssistedRoleplay.Model.Character
             {
                 AppliedEffects.Add(StatusFab.createStatus(affliction));
             }
+            FireStatusChangedEvent("Afflictions");
+
         }
 
         /// <summary>
@@ -153,11 +156,19 @@ namespace ComputerAssistedRoleplay.Model.Character
             statusSummary += "\r\nSchmerz: " + Pain;
             statusSummary += "\r\nBlut: " + Blood;
             statusSummary += "\r\nLebt noch: " + !IsDead;
-            statusSummary += "\r\nStatuseffekte:\n";
+            statusSummary += "\r\nStatuseffekte:\r\n";
 
+            List<string> statusDescriptions = new List<string>();
             foreach(IStatusEffect effect in AppliedEffects)
             {
-                statusSummary += effect.ToString() + "\r\n";
+                statusDescriptions.Add(effect.Description());
+            }
+
+            statusDescriptions = statusDescriptions.Distinct().ToList<string>();
+
+            foreach(string effectDesc in statusDescriptions)
+            {
+                statusSummary += effectDesc + "\r\n";
             }
 
             return statusSummary;

@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ComputerAssistedRoleplay.Model;
+using ComputerAssistedRoleplay.Model.Character;
 using ComputerAssistedRoleplay.Model.Logging;
-using ComputerAssistedRoleplay.View;
 
 namespace ComputerAssistedRoleplay.Controller
 {
@@ -16,9 +16,14 @@ namespace ComputerAssistedRoleplay.Controller
         /// </summary>
         /// <param name="controller">Instance of the controller that is operating the view</param>
         void SetController(MainWindowController controller);
+
+        void displayPlayerDescription(string description);
+
+        void displayEnemyDescription(string description);
+
     }
 
-    public class MainWindowController
+    public class MainWindowController : IStatusObserver
     {
         /// <summary>
         /// Interface of the Hitzone Window
@@ -40,6 +45,8 @@ namespace ComputerAssistedRoleplay.Controller
             _carCalc = calculator;
             _view.SetController(this);
             _carCalc.Log.Subscribe(_view);
+            _carCalc.PlayerCharacter.Status.Subscribe(this);
+            _carCalc.EnemyCharacter.Status.Subscribe(this);
         }
 
         /// <summary>
@@ -47,7 +54,8 @@ namespace ComputerAssistedRoleplay.Controller
         /// </summary>
         public void LoadView()
         {
-            //DO nothing (for now)
+            _view.displayPlayerDescription(_carCalc.PlayerCharacter.ToString());
+            _view.displayEnemyDescription(_carCalc.EnemyCharacter.ToString());
         }
 
         /// <summary>
@@ -130,6 +138,22 @@ namespace ComputerAssistedRoleplay.Controller
         internal void throwDiceString(string diceString)
         {
             _carCalc.throwDiceByFormula(diceString);
+        }
+
+        public void statusChanged(IStatus status, StatusChangedEventArgs e)
+        {
+            _view.displayPlayerDescription(_carCalc.PlayerCharacter.ToString());
+            _view.displayEnemyDescription(_carCalc.EnemyCharacter.ToString());
+        }
+
+        internal void playerAttack()
+        {
+            _carCalc.PlayerCharacter.Attack(_carCalc.EnemyCharacter);
+        }
+
+        internal void enemyAttack()
+        {
+            _carCalc.EnemyCharacter.Attack(_carCalc.PlayerCharacter);
         }
     }
 }

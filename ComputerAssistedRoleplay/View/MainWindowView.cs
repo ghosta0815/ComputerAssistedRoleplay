@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ComputerAssistedRoleplay.Controller;
+using ComputerAssistedRoleplay.Model.Character;
 using ComputerAssistedRoleplay.Model.Logging;
 
 namespace ComputerAssistedRoleplay.View
@@ -189,6 +183,26 @@ namespace ComputerAssistedRoleplay.View
             this.Enabled = true;
             enemyView.Show(this);
         }
+
+        public void displayPlayerDescription(string description)
+        {
+            this.characterDescriptionTextBox.Text = description;
+        }
+
+        public void displayEnemyDescription(string description)
+        {
+            this.enemyDescriptionTextBox.Text = description;
+        }
         #endregion
+
+        private void playerAttacksBtn_Click(object sender, EventArgs e)
+        {
+            _controller.playerAttack();
+        }
+
+        private void enemyAttacksBtn_Click(object sender, EventArgs e)
+        {
+            _controller.enemyAttack();
+        }
     }
 }
