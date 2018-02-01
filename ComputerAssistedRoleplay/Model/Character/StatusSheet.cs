@@ -115,6 +115,9 @@ namespace ComputerAssistedRoleplay.Model.Character
 
         private StatusFactory StatusFab;
 
+        /// <summary>
+        /// Default consturctor of the Statussheet
+        /// </summary>
         public StatusSheet()
         {
             StatusFab = new StatusFactory();
@@ -148,6 +151,10 @@ namespace ComputerAssistedRoleplay.Model.Character
             }
         }
 
+        /// <summary>
+        /// Overridden toString method to display the status of the character
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             string statusSummary = "";

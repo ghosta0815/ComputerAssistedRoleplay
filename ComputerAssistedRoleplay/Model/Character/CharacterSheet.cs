@@ -10,6 +10,11 @@ namespace ComputerAssistedRoleplay.Model.Character
         public Weapon EquippedWeapon { get; set; }
         public StatusSheet Status { get; }
 
+        /// <summary>
+        /// Constructor for the CHaractersheet
+        /// </summary>
+        /// <param name="hitzone"></param>
+        /// <param name="defaultWeapon"></param>
         public CharacterSheet(Hitzones hitzone, Weapon defaultWeapon)
         {
             Hitzone = hitzone;
@@ -45,6 +50,10 @@ namespace ComputerAssistedRoleplay.Model.Character
             Status.AddAfflictions(hit.Afflictions);
         }
 
+        /// <summary>
+        /// Overridden ToString method that returns the description of the character
+        /// </summary>
+        /// <returns>Characterdescription</returns>
         public override string ToString()
         {
             string characterDescription = "";

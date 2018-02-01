@@ -41,7 +41,7 @@ namespace ComputerAssistedRoleplay.Tests
         [TestCase]
         public void DiceUpperLowerBound()
         {
-            //upperLowerBound[Dice,[Lower,Upper]
+            //upperLowerBound[Dice,[Lower,Upper]]
             Dictionary<Dice, List<int>> upperLowerBound = new Dictionary<Dice, List<int>>();
             upperLowerBound.Add(new Dice(0, 0, 0), new List<int> { 0, 0 });
             upperLowerBound.Add(new Dice(1, 0, 0), new List<int> { 0, 0 });

@@ -15,6 +15,9 @@ namespace ComputerAssistedRoleplay.Model.Logging
     /// </summary>
     public class LogEventArgs : EventArgs
     {
+        /// <summary>
+        /// Returns true when the log was cleared with this event;
+        /// </summary>
         public bool LogCleared;
         /// <summary>
         /// The string that was just added to the Log entry;

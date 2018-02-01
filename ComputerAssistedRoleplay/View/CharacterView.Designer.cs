@@ -28,21 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.attackBtn = new System.Windows.Forms.Button();
             this.HitPointsDisplay = new System.Windows.Forms.NumericUpDown();
             this.characterDescriptionTextBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.HitPointsDisplay)).BeginInit();
             this.SuspendLayout();
-            // 
-            // attackBtn
-            // 
-            this.attackBtn.Location = new System.Drawing.Point(550, 13);
-            this.attackBtn.Name = "attackBtn";
-            this.attackBtn.Size = new System.Drawing.Size(75, 23);
-            this.attackBtn.TabIndex = 0;
-            this.attackBtn.Text = "Angriff";
-            this.attackBtn.UseVisualStyleBackColor = true;
-            this.attackBtn.Click += new System.EventHandler(this.attackBtn_Click);
             // 
             // HitPointsDisplay
             // 
@@ -75,10 +64,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(637, 649);
+            this.ClientSize = new System.Drawing.Size(504, 649);
             this.Controls.Add(this.characterDescriptionTextBox);
             this.Controls.Add(this.HitPointsDisplay);
-            this.Controls.Add(this.attackBtn);
             this.Name = "CharacterView";
             this.Text = "CharacterView";
             ((System.ComponentModel.ISupportInitialize)(this.HitPointsDisplay)).EndInit();
@@ -88,8 +76,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button attackBtn;
         private System.Windows.Forms.NumericUpDown HitPointsDisplay;
         private System.Windows.Forms.TextBox characterDescriptionTextBox;
     }

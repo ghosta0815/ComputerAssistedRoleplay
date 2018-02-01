@@ -31,20 +31,39 @@ namespace ComputerAssistedRoleplay.View
         }
 
         /// <summary>
-        /// ILogObserver function when a Log is Changing the Text
+        /// Displays the Description of the Player
         /// </summary>
-        /// <param name="log"></param>
-        /// <param name="e"></param>
-        public void logTextChanged(ILog log, LogEventArgs e)
+        /// <param name="description"></param>
+        public void displayPlayerDescription(string description)
         {
-            if (e.LogCleared)
-            {
-                this.LogTextBox.Text = "";
-            }
-            else
-            {
-                this.LogTextBox.AppendText(e.NewLogEntry + "\r\n");
-            }
+            this.characterDescriptionTextBox.Text = description;
+        }
+
+        /// <summary>
+        /// Displays the description of the Enemy
+        /// </summary>
+        /// <param name="description"></param>
+        public void displayEnemyDescription(string description)
+        {
+            this.enemyDescriptionTextBox.Text = description;
+        }
+
+        /// <summary>
+        /// Sets the text of the LogTextbox to text
+        /// </summary>
+        /// <param name="text"></param>
+        public void setLogText(string text)
+        {
+            this.LogTextBox.Text = text;
+        }
+
+        /// <summary>
+        /// Appends the Text to the Logtextbox
+        /// </summary>
+        /// <param name="text"></param>
+        public void appendLogText(string text)
+        {
+            this.LogTextBox.AppendText(text);
         }
 
         #region ButtonEvents
@@ -184,25 +203,25 @@ namespace ComputerAssistedRoleplay.View
             enemyView.Show(this);
         }
 
-        public void displayPlayerDescription(string description)
-        {
-            this.characterDescriptionTextBox.Text = description;
-        }
-
-        public void displayEnemyDescription(string description)
-        {
-            this.enemyDescriptionTextBox.Text = description;
-        }
-        #endregion
-
+        /// <summary>
+        /// The player attacks the Enemy
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void playerAttacksBtn_Click(object sender, EventArgs e)
         {
             _controller.playerAttack();
         }
 
+        /// <summary>
+        /// The Enemy attacks the player
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void enemyAttacksBtn_Click(object sender, EventArgs e)
         {
             _controller.enemyAttack();
         }
+        #endregion
     }
 }

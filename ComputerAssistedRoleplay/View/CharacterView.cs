@@ -47,16 +47,6 @@ namespace ComputerAssistedRoleplay.View
         }
 
         /// <summary>
-        /// Attacks the opponent
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void attackBtn_Click(object sender, EventArgs e)
-        {
-            _controller.AttackOpponent();
-        }
-
-        /// <summary>
         /// Displays the Hitpoints of the Character
         /// </summary>
         /// <param name="hitpoints"></param>
@@ -65,6 +55,10 @@ namespace ComputerAssistedRoleplay.View
             this.HitPointsDisplay.Value = hitpoints;
         }
 
+        /// <summary>
+        /// Displays the Description of the Character
+        /// </summary>
+        /// <param name="characterDescription"></param>
         public void DisplayCharacterDescription(string characterDescription)
         {
             this.characterDescriptionTextBox.Text = characterDescription;
