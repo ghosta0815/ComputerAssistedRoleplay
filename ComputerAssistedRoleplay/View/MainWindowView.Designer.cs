@@ -46,10 +46,12 @@
             this.enemyAttacksBtn = new System.Windows.Forms.Button();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.CombatTimeTextbox = new System.Windows.Forms.TextBox();
-            this.AdvanceTimeButton = new System.Windows.Forms.Button();
             this.ResetTimeButton = new System.Windows.Forms.Button();
+            this.AdvanceTimeButton = new System.Windows.Forms.Button();
+            this.CombatTimeTextbox = new System.Windows.Forms.TextBox();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.playerWeaponComboBox = new System.Windows.Forms.ComboBox();
+            this.enemyWeaponComboBox = new System.Windows.Forms.ComboBox();
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.SuspendLayout();
@@ -155,7 +157,7 @@
             // 
             // PlayerSheetBtn
             // 
-            this.PlayerSheetBtn.Location = new System.Drawing.Point(3, 41);
+            this.PlayerSheetBtn.Location = new System.Drawing.Point(7, 41);
             this.PlayerSheetBtn.Name = "PlayerSheetBtn";
             this.PlayerSheetBtn.Size = new System.Drawing.Size(75, 23);
             this.PlayerSheetBtn.TabIndex = 0;
@@ -198,7 +200,7 @@
             // 
             // playerAttacksBtn
             // 
-            this.playerAttacksBtn.Location = new System.Drawing.Point(3, 70);
+            this.playerAttacksBtn.Location = new System.Drawing.Point(7, 70);
             this.playerAttacksBtn.Name = "playerAttacksBtn";
             this.playerAttacksBtn.Size = new System.Drawing.Size(75, 23);
             this.playerAttacksBtn.TabIndex = 9;
@@ -233,6 +235,8 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.enemyWeaponComboBox);
+            this.tabPage1.Controls.Add(this.playerWeaponComboBox);
             this.tabPage1.Controls.Add(this.ResetTimeButton);
             this.tabPage1.Controls.Add(this.EnemySheetBtn);
             this.tabPage1.Controls.Add(this.AdvanceTimeButton);
@@ -257,23 +261,15 @@
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // tabPage2
+            // ResetTimeButton
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(285, 453);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // CombatTimeTextbox
-            // 
-            this.CombatTimeTextbox.Location = new System.Drawing.Point(6, 6);
-            this.CombatTimeTextbox.Name = "CombatTimeTextbox";
-            this.CombatTimeTextbox.ReadOnly = true;
-            this.CombatTimeTextbox.Size = new System.Drawing.Size(100, 20);
-            this.CombatTimeTextbox.TabIndex = 12;
+            this.ResetTimeButton.Location = new System.Drawing.Point(146, 6);
+            this.ResetTimeButton.Name = "ResetTimeButton";
+            this.ResetTimeButton.Size = new System.Drawing.Size(43, 20);
+            this.ResetTimeButton.TabIndex = 14;
+            this.ResetTimeButton.Text = "Reset";
+            this.ResetTimeButton.UseVisualStyleBackColor = true;
+            this.ResetTimeButton.Click += new System.EventHandler(this.ResetTimeButton_Click);
             // 
             // AdvanceTimeButton
             // 
@@ -285,15 +281,45 @@
             this.AdvanceTimeButton.UseVisualStyleBackColor = true;
             this.AdvanceTimeButton.Click += new System.EventHandler(this.AdvanceTimeButton_Click);
             // 
-            // ResetTimeButton
+            // CombatTimeTextbox
             // 
-            this.ResetTimeButton.Location = new System.Drawing.Point(146, 6);
-            this.ResetTimeButton.Name = "ResetTimeButton";
-            this.ResetTimeButton.Size = new System.Drawing.Size(43, 20);
-            this.ResetTimeButton.TabIndex = 14;
-            this.ResetTimeButton.Text = "Reset";
-            this.ResetTimeButton.UseVisualStyleBackColor = true;
-            this.ResetTimeButton.Click += new System.EventHandler(this.ResetTimeButton_Click);
+            this.CombatTimeTextbox.Location = new System.Drawing.Point(6, 6);
+            this.CombatTimeTextbox.Name = "CombatTimeTextbox";
+            this.CombatTimeTextbox.ReadOnly = true;
+            this.CombatTimeTextbox.Size = new System.Drawing.Size(100, 20);
+            this.CombatTimeTextbox.TabIndex = 12;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(285, 491);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // playerWeaponComboBox
+            // 
+            this.playerWeaponComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.playerWeaponComboBox.FormattingEnabled = true;
+            this.playerWeaponComboBox.Location = new System.Drawing.Point(7, 100);
+            this.playerWeaponComboBox.Name = "playerWeaponComboBox";
+            this.playerWeaponComboBox.Size = new System.Drawing.Size(75, 21);
+            this.playerWeaponComboBox.Sorted = true;
+            this.playerWeaponComboBox.TabIndex = 15;
+            this.playerWeaponComboBox.SelectedIndexChanged += new System.EventHandler(this.playerWeaponComboBox_SelectedIndexChanged);
+            // 
+            // enemyWeaponComboBox
+            // 
+            this.enemyWeaponComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.enemyWeaponComboBox.FormattingEnabled = true;
+            this.enemyWeaponComboBox.Location = new System.Drawing.Point(204, 99);
+            this.enemyWeaponComboBox.Name = "enemyWeaponComboBox";
+            this.enemyWeaponComboBox.Size = new System.Drawing.Size(75, 21);
+            this.enemyWeaponComboBox.Sorted = true;
+            this.enemyWeaponComboBox.TabIndex = 16;
+            this.enemyWeaponComboBox.SelectedIndexChanged += new System.EventHandler(this.enemyWeaponComboBox_SelectedIndexChanged);
             // 
             // MainWindowView
             // 
@@ -339,5 +365,7 @@
         private System.Windows.Forms.TextBox CombatTimeTextbox;
         private System.Windows.Forms.Button AdvanceTimeButton;
         private System.Windows.Forms.Button ResetTimeButton;
+        private System.Windows.Forms.ComboBox enemyWeaponComboBox;
+        private System.Windows.Forms.ComboBox playerWeaponComboBox;
     }
 }

@@ -5,7 +5,7 @@ using ComputerAssistedRoleplay.Model.Character;
 
 namespace ComputerAssistedRoleplay.View
 {
-    public partial class CharacterView : Form, ICharacterView
+    public partial class CharacterView : Form, ICharacterView, ICharacterObserver
     {
         CharacterViewController _controller;
 
@@ -24,16 +24,6 @@ namespace ComputerAssistedRoleplay.View
         public void SetController(CharacterViewController controller)
         {
             _controller = controller;
-        }
-
-        /// <summary>
-        /// From the IStatusObserver interface, when a statuschanged event has occured
-        /// </summary>
-        /// <param name="status"></param>
-        /// <param name="e"></param>
-        public void statusChanged(IStatus status, StatusChangedEventArgs e)
-        {
-            this.HitPointsDisplay.Value = e.HitPoints;
         }
 
         /// <summary>
@@ -62,6 +52,11 @@ namespace ComputerAssistedRoleplay.View
         public void DisplayCharacterDescription(string characterDescription)
         {
             this.characterDescriptionTextBox.Text = characterDescription;
+        }
+
+        public void CharacterChangedEvent(ICharacterSender status, CharacterChangedEventArgs e)
+        {
+            this.characterDescriptionTextBox.Text = e.CharacterInfo;
         }
     }
 }

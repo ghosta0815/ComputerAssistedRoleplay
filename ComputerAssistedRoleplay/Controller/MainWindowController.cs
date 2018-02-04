@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using ComputerAssistedRoleplay.Model;
 using ComputerAssistedRoleplay.Model.Character;
 using ComputerAssistedRoleplay.Model.Misc;
@@ -45,12 +46,24 @@ namespace ComputerAssistedRoleplay.Controller
         /// </summary>
         /// <param name="description"></param>
         void displayEnemyDescription(string description);
+
+        /// <summary>
+        /// Displays all available weapons for the Player and the enemy
+        /// </summary>
+        /// <param name="weaponNames">List of available weaponnames</param>
+        void displayPlayerWeapons(List<string> weaponNames, string selectedWeapon);
+
+        /// <summary>
+        /// Displays all available weapons for the enemy
+        /// </summary>
+        /// <param name="weaponNames">List of available weaponnames</param>
+        void displayEnemyWeapons(List<string> weaponNames, string selectedWeapon);
     }
 
     /// <summary>
     /// Controller of the Main Window
     /// </summary>
-    public class MainWindowController : IStatusObserver, ILogObserver, IClockObserver
+    public class MainWindowController : ICharacterObserver, ILogObserver, IClockObserver
     {
         /// <summary>
         /// Interface of the Hitzone Window
@@ -69,6 +82,8 @@ namespace ComputerAssistedRoleplay.Controller
             _view.displayPlayerDescription(_carCalc.PlayerCharacter.ToString());
             _view.displayEnemyDescription(_carCalc.EnemyCharacter.ToString());
             _view.SetTime(_carCalc.Time.ToString());
+            _view.displayPlayerWeapons(_carCalc.WeapFab.AvailableWeapons, _carCalc.PlayerCharacter.Weapon.Name);
+            _view.displayEnemyWeapons(_carCalc.WeapFab.AvailableWeapons, _carCalc.EnemyCharacter.Weapon.Name);
         }
 
         /// <summary>
@@ -83,8 +98,8 @@ namespace ComputerAssistedRoleplay.Controller
             _view.SetController(this);
             _carCalc.Log.Subscribe(this);
             _carCalc.Time.Subscribe(this);
-            _carCalc.PlayerCharacter.Status.Subscribe(this);
-            _carCalc.EnemyCharacter.Status.Subscribe(this);
+            _carCalc.PlayerCharacter.Subscribe(this);
+            _carCalc.EnemyCharacter.Subscribe(this);
         }
 
         /// <summary>
@@ -138,8 +153,8 @@ namespace ComputerAssistedRoleplay.Controller
         {
             _carCalc.Log.UnSubscribe(this);
             _carCalc.Time.Unsubscribe(this);
-            _carCalc.PlayerCharacter.Status.UnSubscribe(this);
-            _carCalc.EnemyCharacter.Status.UnSubscribe(this);
+            _carCalc.PlayerCharacter.UnSubscribe(this);
+            _carCalc.EnemyCharacter.UnSubscribe(this);
         }
 
         /// <summary>
@@ -173,17 +188,6 @@ namespace ComputerAssistedRoleplay.Controller
         }
 
         /// <summary>
-        /// Redraws the Status of Player and Enemy
-        /// </summary>
-        /// <param name="status"></param>
-        /// <param name="e"></param>
-        public void statusChanged(IStatus status, StatusChangedEventArgs e)
-        {
-            _view.displayPlayerDescription(_carCalc.PlayerCharacter.ToString());
-            _view.displayEnemyDescription(_carCalc.EnemyCharacter.ToString());
-        }
-
-        /// <summary>
         /// ILogObserver function when a Log is Changing the Text
         /// </summary>
         /// <param name="log"></param>
@@ -209,6 +213,14 @@ namespace ComputerAssistedRoleplay.Controller
         }
 
         /// <summary>
+        /// The enemy attacks the player with the equipped weapon
+        /// </summary>
+        internal void enemyAttack()
+        {
+            _carCalc.EnemyCharacter.Attack(_carCalc.PlayerCharacter);
+        }
+
+        /// <summary>
         /// Advances the combat time
         /// </summary>
         internal void AdvanceTime()
@@ -226,12 +238,14 @@ namespace ComputerAssistedRoleplay.Controller
             _carCalc.Time.Reset();
         }
 
-        /// <summary>
-        /// The enemy attacks the player with the equipped weapon
-        /// </summary>
-        internal void enemyAttack()
+        internal void setPlayerWeapon(string weaponName)
         {
-            _carCalc.EnemyCharacter.Attack(_carCalc.PlayerCharacter);
+            _carCalc.setPlayerWeapon(weaponName);
+        }
+
+        internal void setEnemyWeapon(string weaponName)
+        {
+            _carCalc.setEnemyWeapon(weaponName);
         }
 
         /// <summary>
@@ -242,6 +256,12 @@ namespace ComputerAssistedRoleplay.Controller
         public void ClockTimeChangedEvent(IClock sender, ClockEventArgs e)
         {
             _view.SetTime(e.TimeString);
+        }
+
+        public void CharacterChangedEvent(ICharacterSender status, CharacterChangedEventArgs e)
+        {
+            _view.displayPlayerDescription(_carCalc.PlayerCharacter.ToString());
+            _view.displayEnemyDescription(_carCalc.EnemyCharacter.ToString());
         }
     }
 }

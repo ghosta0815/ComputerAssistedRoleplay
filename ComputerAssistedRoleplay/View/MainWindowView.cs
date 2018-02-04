@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using ComputerAssistedRoleplay.Controller;
 using ComputerAssistedRoleplay.Model.Character;
@@ -222,19 +223,73 @@ namespace ComputerAssistedRoleplay.View
             _controller.enemyAttack();
         }
 
+        /// <summary>
+        /// Button to advane the Combat time is clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AdvanceTimeButton_Click(object sender, EventArgs e)
         {
             _controller.AdvanceTime();
         }
 
+        /// <summary>
+        /// Button to reset the Combat time is clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ResetTimeButton_Click(object sender, EventArgs e)
         {
             _controller.ResetTime();
         }
 
-        public void SetTime(string text)
+        /// <summary>
+        /// Sets the Time Textbox to timeString
+        /// </summary>
+        /// <param name="timeString">The CombatTime as string</param>
+        public void SetTime(string timeString)
         {
-            this.CombatTimeTextbox.Text = text;
+            this.CombatTimeTextbox.Text = timeString;
+        }
+
+        /// <summary>
+        /// The Player selects a new weapon
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void playerWeaponComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _controller.setPlayerWeapon(this.playerWeaponComboBox.Text);
+        }
+
+        /// <summary>
+        /// The Enemy selects a new weapon
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void enemyWeaponComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _controller.setEnemyWeapon(this.enemyWeaponComboBox.Text);
+        }
+
+        /// <summary>
+        /// Displays the weaponNames in the Weapon comboboxes of Player
+        /// </summary>
+        /// <param name="weaponNames"></param>
+        public void displayPlayerWeapons(List<string> weaponNames, string selectedWeapon)
+        {
+            this.playerWeaponComboBox.Items.AddRange(weaponNames.ToArray());
+            this.playerWeaponComboBox.Text = selectedWeapon;
+        }
+
+        /// <summary>
+        /// Displays the weaponNames in the Weapon comboboxes of the Enemy
+        /// </summary>
+        /// <param name="weaponNames"></param>
+        public void displayEnemyWeapons(List<string> weaponNames, string selectedWeapon)
+        {
+            this.enemyWeaponComboBox.Items.AddRange(weaponNames.ToArray());
+            this.enemyWeaponComboBox.Text = selectedWeapon;
         }
     }
 }

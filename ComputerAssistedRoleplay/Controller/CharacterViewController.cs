@@ -3,7 +3,7 @@ using ComputerAssistedRoleplay.Model.Character;
 
 namespace ComputerAssistedRoleplay.Controller
 {
-    public interface ICharacterView : IStatusObserver
+    public interface ICharacterView : ICharacterObserver
     {
         /// <summary>
         /// Sets the controller of the View
@@ -38,7 +38,7 @@ namespace ComputerAssistedRoleplay.Controller
             _opponent = opponent;
 
             _view.SetController(this);
-            _character.Status.Subscribe(_view);
+            _character.Subscribe(_view);
             this.LoadView();
         }
 

@@ -10,7 +10,6 @@ namespace ComputerAssistedRoleplay.Model.Hitzone
 {
     public class HitzoneFactory
     {
-        #region Variables
         /// <summary>
         /// Available Hitzones for the races
         /// </summary>
@@ -23,9 +22,7 @@ namespace ComputerAssistedRoleplay.Model.Hitzone
             get { return RaceHitzones.Keys.ToList(); }
 
         }
-        #endregion
 
-        #region Constructors
         /// <summary>
         /// Creates a new instance of the Hitzone Factory
         /// </summary>
@@ -39,9 +36,7 @@ namespace ComputerAssistedRoleplay.Model.Hitzone
                 RaceHitzones.Add(hitzones.Key, new Hitzones(hitzones.Key, hitzones.Value));
             }
         }
-        #endregion
 
-        #region Methods
         /// <summary>
         /// Returns a Hitzone based on the Race
         /// </summary>
@@ -88,7 +83,6 @@ namespace ComputerAssistedRoleplay.Model.Hitzone
             }
             return jsHitzones;
         }
-        #endregion
 
         //JSON Writer:
         //Takes the RaceHitzones and converts it to HitzonesJS class, which is converted to HitzonesJS.json

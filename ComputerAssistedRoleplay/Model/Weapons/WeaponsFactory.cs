@@ -26,7 +26,7 @@ namespace ComputerAssistedRoleplay.Model.Weapons
         {
             get
             {
-                return Weapons.Keys.ToList<string>();
+                return Weapons.Keys.ToList();
             }
         }
         #endregion

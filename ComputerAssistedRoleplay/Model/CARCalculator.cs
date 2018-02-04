@@ -41,6 +41,16 @@ namespace ComputerAssistedRoleplay.Model
 
         }
 
+        public void setPlayerWeapon(string weaponName)
+        {
+            PlayerCharacter.Weapon = WeapFab.getWeapon(weaponName);
+        }
+
+        public void setEnemyWeapon(string weaponName)
+        {
+            EnemyCharacter.Weapon = WeapFab.getWeapon(weaponName);
+        }
+
         /// <summary>
         /// Throws a single dice
         /// </summary>
