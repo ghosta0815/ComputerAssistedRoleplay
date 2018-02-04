@@ -107,7 +107,7 @@ namespace ComputerAssistedRoleplay.Model.Misc
         /// <param name="textToAppend">The Text to append to the Log</param>
         public void Append(string valueToAppend, params Object[] args)
         {
-            string stringToAppend = String.Format(valueToAppend, args);
+            string stringToAppend = CombatTime.getInstance.ToString() + ": " + String.Format(valueToAppend, args);
             Text = Text + stringToAppend + "\r\n";
             textHandler.Invoke(this, new LogEventArgs(Text, stringToAppend, false));
         }

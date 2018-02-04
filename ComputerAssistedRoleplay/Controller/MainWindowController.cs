@@ -214,6 +214,8 @@ namespace ComputerAssistedRoleplay.Controller
         internal void AdvanceTime()
         {
             _carCalc.Time.Step();
+            enemyAttack();
+            playerAttack();
         }
 
         /// <summary>
