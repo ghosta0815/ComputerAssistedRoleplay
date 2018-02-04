@@ -1,23 +1,32 @@
 ﻿using System;
 using ComputerAssistedRoleplay.Model;
 using ComputerAssistedRoleplay.Model.Character;
-using ComputerAssistedRoleplay.Model.Logging;
+using ComputerAssistedRoleplay.Model.Misc;
 
 namespace ComputerAssistedRoleplay.Controller
 {
+    /// <summary>
+    /// Interface of the MainWindow to support the Controller
+    /// </summary>
     public interface IMainWindowView
     {
         /// <summary>
         /// Sets the text of the Log to text
         /// </summary>
         /// <param name="text"></param>
-        void setLogText(string text);
+        void SetLogText(string text);
 
         /// <summary>
         /// Appends text to the Log
         /// </summary>
         /// <param name="text"></param>
-        void appendLogText(string text);
+        void AppendLogText(string text);
+
+        /// <summary>
+        /// Sets the CombatTime
+        /// </summary>
+        /// <param name="text"></param>
+        void SetTime(string text);
 
         /// <summary>
         /// Sets the controller of the View
@@ -38,7 +47,10 @@ namespace ComputerAssistedRoleplay.Controller
         void displayEnemyDescription(string description);
     }
 
-    public class MainWindowController : IStatusObserver, ILogObserver
+    /// <summary>
+    /// Controller of the Main Window
+    /// </summary>
+    public class MainWindowController : IStatusObserver, ILogObserver, IClockObserver
     {
         /// <summary>
         /// Interface of the Hitzone Window
@@ -56,9 +68,9 @@ namespace ComputerAssistedRoleplay.Controller
         {
             _view.displayPlayerDescription(_carCalc.PlayerCharacter.ToString());
             _view.displayEnemyDescription(_carCalc.EnemyCharacter.ToString());
+            _view.SetTime(_carCalc.Time.ToString());
         }
 
-        #region Controllers
         /// <summary>
         /// Createas a new instance of the Hitzone view controller
         /// </summary>
@@ -70,6 +82,7 @@ namespace ComputerAssistedRoleplay.Controller
             _carCalc = calculator;
             _view.SetController(this);
             _carCalc.Log.Subscribe(this);
+            _carCalc.Time.Subscribe(this);
             _carCalc.PlayerCharacter.Status.Subscribe(this);
             _carCalc.EnemyCharacter.Status.Subscribe(this);
         }
@@ -109,7 +122,6 @@ namespace ComputerAssistedRoleplay.Controller
         {
             CharacterViewController enemyViewController = new CharacterViewController(enemyView, _carCalc.EnemyCharacter, _carCalc.PlayerCharacter);
         }
-        #endregion
 
         /// <summary>
         /// Empties the CombatLog
@@ -125,6 +137,7 @@ namespace ComputerAssistedRoleplay.Controller
         internal void Close()
         {
             _carCalc.Log.UnSubscribe(this);
+            _carCalc.Time.Unsubscribe(this);
             _carCalc.PlayerCharacter.Status.UnSubscribe(this);
             _carCalc.EnemyCharacter.Status.UnSubscribe(this);
         }
@@ -175,15 +188,15 @@ namespace ComputerAssistedRoleplay.Controller
         /// </summary>
         /// <param name="log"></param>
         /// <param name="e"></param>
-        public void logTextChanged(ILog log, LogEventArgs e)
+        public void logTextChangedEvent(ILog log, LogEventArgs e)
         {
             if (e.LogCleared)
             {
-                _view.setLogText("");
+                _view.SetLogText("");
             }
             else
             {
-                _view.appendLogText(e.NewLogEntry + "\r\n");
+                _view.AppendLogText(e.NewLogEntry + "\r\n");
             }
         }
 
@@ -196,11 +209,37 @@ namespace ComputerAssistedRoleplay.Controller
         }
 
         /// <summary>
+        /// Advances the combat time
+        /// </summary>
+        internal void AdvanceTime()
+        {
+            _carCalc.Time.Step();
+        }
+
+        /// <summary>
+        /// Resets the combat time
+        /// </summary>
+        internal void ResetTime()
+        {
+            _carCalc.Time.Reset();
+        }
+
+        /// <summary>
         /// The enemy attacks the player with the equipped weapon
         /// </summary>
         internal void enemyAttack()
         {
             _carCalc.EnemyCharacter.Attack(_carCalc.PlayerCharacter);
+        }
+
+        /// <summary>
+        /// IClockObserver function when the time changes
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void ClockTimeChangedEvent(IClock sender, ClockEventArgs e)
+        {
+            _view.SetTime(e.TimeString);
         }
     }
 }

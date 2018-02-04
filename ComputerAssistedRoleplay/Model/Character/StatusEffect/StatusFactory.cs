@@ -1,7 +1,5 @@
 ﻿using System;
 using ComputerAssistedRoleplay.Model.Weapons.Affliction;
-using ComputerAssistedRoleplay.Model.Character;
-using ComputerAssistedRoleplay.Model.Character.StatusEffect;
 
 namespace ComputerAssistedRoleplay.Model.Character.StatusEffect
 {

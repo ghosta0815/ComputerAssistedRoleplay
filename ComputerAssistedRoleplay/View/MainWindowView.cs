@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using ComputerAssistedRoleplay.Controller;
 using ComputerAssistedRoleplay.Model.Character;
-using ComputerAssistedRoleplay.Model.Logging;
+using ComputerAssistedRoleplay.Model.Misc;
 
 namespace ComputerAssistedRoleplay.View
 {
@@ -52,7 +52,7 @@ namespace ComputerAssistedRoleplay.View
         /// Sets the text of the LogTextbox to text
         /// </summary>
         /// <param name="text"></param>
-        public void setLogText(string text)
+        public void SetLogText(string text)
         {
             this.LogTextBox.Text = text;
         }
@@ -61,12 +61,11 @@ namespace ComputerAssistedRoleplay.View
         /// Appends the Text to the Logtextbox
         /// </summary>
         /// <param name="text"></param>
-        public void appendLogText(string text)
+        public void AppendLogText(string text)
         {
             this.LogTextBox.AppendText(text);
         }
 
-        #region ButtonEvents
         /// <summary>
         /// Opens the Hitzoneview
         /// </summary>
@@ -222,6 +221,20 @@ namespace ComputerAssistedRoleplay.View
         {
             _controller.enemyAttack();
         }
-        #endregion
+
+        private void AdvanceTimeButton_Click(object sender, EventArgs e)
+        {
+            _controller.AdvanceTime();
+        }
+
+        private void ResetTimeButton_Click(object sender, EventArgs e)
+        {
+            _controller.ResetTime();
+        }
+
+        public void SetTime(string text)
+        {
+            this.CombatTimeTextbox.Text = text;
+        }
     }
 }

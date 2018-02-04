@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.IO;
 using ComputerAssistedRoleplay.Model.JSON;
-using ComputerAssistedRoleplay.Model.Logging;
+using ComputerAssistedRoleplay.Model.Misc;
 using Newtonsoft.Json;
 
 namespace ComputerAssistedRoleplay.Model.Hitzone

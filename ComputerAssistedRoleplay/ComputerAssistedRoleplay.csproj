@@ -81,6 +81,7 @@
     <Compile Include="Model\Character\StatusEffect\IStatusEffect.cs" />
     <Compile Include="Model\Character\StatusEffect\Unconsciousness.cs" />
     <Compile Include="Model\Character\StatusSheet.cs" />
+    <Compile Include="Model\Misc\Time.cs" />
     <Compile Include="Model\RandomGenerator\Dice.cs" />
     <Compile Include="Model\RandomGenerator\DiceInterpreter.cs" />
     <Compile Include="Model\RandomGenerator\RNG.cs" />
@@ -90,7 +91,7 @@
     <Compile Include="Model\Weapons\Afflictions\ICauseAfflictions.cs" />
     <Compile Include="Model\Weapons\WeaponsFactory.cs" />
     <Compile Include="Model\JSON\WeaponsJS.cs" />
-    <Compile Include="Model\Logging\Log.cs" />
+    <Compile Include="Model\Misc\Log.cs" />
     <Compile Include="Model\Weapons\Weapon.cs" />
     <Compile Include="Tests\DiceInterpreterTest.cs" />
     <Compile Include="Tests\DiceTest.cs" />
@@ -98,6 +99,7 @@
     <Compile Include="Tests\RNGTest.cs" />
     <Compile Include="Tests\StatusFactoryTest.cs" />
     <Compile Include="Tests\StatusSheetTest.cs" />
+    <Compile Include="Tests\TimeTest.cs" />
     <Compile Include="Tests\WeaponsFactoryTest.cs" />
     <Compile Include="View\CharacterView.cs">
       <SubType>Form</SubType>

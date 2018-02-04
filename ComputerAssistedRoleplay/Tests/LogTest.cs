@@ -1,5 +1,5 @@
 ﻿using System;
-using ComputerAssistedRoleplay.Model.Logging;
+using ComputerAssistedRoleplay.Model.Misc;
 using NUnit.Framework;
 
 namespace ComputerAssistedRoleplay.Tests

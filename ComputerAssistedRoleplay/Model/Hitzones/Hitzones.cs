@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using ComputerAssistedRoleplay.Model.Logging;
+using ComputerAssistedRoleplay.Model.Misc;
 using ComputerAssistedRoleplay.Model.RandomGenerator;
 
 namespace ComputerAssistedRoleplay.Model.Hitzone

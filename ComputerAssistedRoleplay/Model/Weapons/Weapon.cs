@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using ComputerAssistedRoleplay.Model.JSON;
 using ComputerAssistedRoleplay.Model.Weapons.Affliction;
 using ComputerAssistedRoleplay.Model.RandomGenerator;
-using ComputerAssistedRoleplay.Model.Logging;
+using ComputerAssistedRoleplay.Model.Misc;
 
 namespace ComputerAssistedRoleplay.Model.Weapons
 {

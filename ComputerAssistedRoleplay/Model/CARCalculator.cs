@@ -1,5 +1,5 @@
 ﻿using System;
-using ComputerAssistedRoleplay.Model.Logging;
+using ComputerAssistedRoleplay.Model.Misc;
 using ComputerAssistedRoleplay.Model.Hitzone;
 using ComputerAssistedRoleplay.Model.Weapons;
 using ComputerAssistedRoleplay.Model.RandomGenerator;
@@ -22,10 +22,15 @@ namespace ComputerAssistedRoleplay.Model
         /// </summary>
         public CombatLog Log { get; set; }
 
-        #region Constructors
+        /// <summary>
+        /// Povides the Combat Time of the Model to the outer world (e.g. the controller)
+        /// </summary>
+        public CombatTime Time { get; set; }
+
         public CARCalculator()
         {
             Log = CombatLog.getInstance;
+            Time = CombatTime.getInstance;
             HitFab = new HitzoneFactory();
             WeapFab = new WeaponsFactory();
             DiceEngine = new DiceInterpreter();
@@ -35,9 +40,7 @@ namespace ComputerAssistedRoleplay.Model
             Round = 0;
 
         }
-        #endregion
 
-        #region Methods for Random Numbers
         /// <summary>
         /// Throws a single dice
         /// </summary>
@@ -72,6 +75,5 @@ namespace ComputerAssistedRoleplay.Model
             }
             return thrownNumber;
         }
-        #endregion
     }
 }

@@ -47,6 +47,9 @@
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.CombatTimeTextbox = new System.Windows.Forms.TextBox();
+            this.AdvanceTimeButton = new System.Windows.Forms.Button();
+            this.ResetTimeButton = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.SuspendLayout();
@@ -152,7 +155,7 @@
             // 
             // PlayerSheetBtn
             // 
-            this.PlayerSheetBtn.Location = new System.Drawing.Point(3, 6);
+            this.PlayerSheetBtn.Location = new System.Drawing.Point(3, 41);
             this.PlayerSheetBtn.Name = "PlayerSheetBtn";
             this.PlayerSheetBtn.Size = new System.Drawing.Size(75, 23);
             this.PlayerSheetBtn.TabIndex = 0;
@@ -163,7 +166,7 @@
             // EnemySheetBtn
             // 
             this.EnemySheetBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.EnemySheetBtn.Location = new System.Drawing.Point(204, 6);
+            this.EnemySheetBtn.Location = new System.Drawing.Point(204, 41);
             this.EnemySheetBtn.Name = "EnemySheetBtn";
             this.EnemySheetBtn.Size = new System.Drawing.Size(75, 23);
             this.EnemySheetBtn.TabIndex = 0;
@@ -195,7 +198,7 @@
             // 
             // playerAttacksBtn
             // 
-            this.playerAttacksBtn.Location = new System.Drawing.Point(3, 35);
+            this.playerAttacksBtn.Location = new System.Drawing.Point(3, 70);
             this.playerAttacksBtn.Name = "playerAttacksBtn";
             this.playerAttacksBtn.Size = new System.Drawing.Size(75, 23);
             this.playerAttacksBtn.TabIndex = 9;
@@ -206,7 +209,7 @@
             // enemyAttacksBtn
             // 
             this.enemyAttacksBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.enemyAttacksBtn.Location = new System.Drawing.Point(204, 35);
+            this.enemyAttacksBtn.Location = new System.Drawing.Point(204, 70);
             this.enemyAttacksBtn.Name = "enemyAttacksBtn";
             this.enemyAttacksBtn.Size = new System.Drawing.Size(75, 23);
             this.enemyAttacksBtn.TabIndex = 10;
@@ -230,8 +233,11 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.ResetTimeButton);
             this.tabPage1.Controls.Add(this.EnemySheetBtn);
+            this.tabPage1.Controls.Add(this.AdvanceTimeButton);
             this.tabPage1.Controls.Add(this.playerAttacksBtn);
+            this.tabPage1.Controls.Add(this.CombatTimeTextbox);
             this.tabPage1.Controls.Add(this.enemyAttacksBtn);
             this.tabPage1.Controls.Add(this.HitZoneWindowCmd);
             this.tabPage1.Controls.Add(this.ClearLogCmd);
@@ -256,10 +262,38 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(285, 491);
+            this.tabPage2.Size = new System.Drawing.Size(285, 453);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // CombatTimeTextbox
+            // 
+            this.CombatTimeTextbox.Location = new System.Drawing.Point(6, 6);
+            this.CombatTimeTextbox.Name = "CombatTimeTextbox";
+            this.CombatTimeTextbox.ReadOnly = true;
+            this.CombatTimeTextbox.Size = new System.Drawing.Size(100, 20);
+            this.CombatTimeTextbox.TabIndex = 12;
+            // 
+            // AdvanceTimeButton
+            // 
+            this.AdvanceTimeButton.Location = new System.Drawing.Point(112, 6);
+            this.AdvanceTimeButton.Name = "AdvanceTimeButton";
+            this.AdvanceTimeButton.Size = new System.Drawing.Size(28, 20);
+            this.AdvanceTimeButton.TabIndex = 13;
+            this.AdvanceTimeButton.Text = ">";
+            this.AdvanceTimeButton.UseVisualStyleBackColor = true;
+            this.AdvanceTimeButton.Click += new System.EventHandler(this.AdvanceTimeButton_Click);
+            // 
+            // ResetTimeButton
+            // 
+            this.ResetTimeButton.Location = new System.Drawing.Point(146, 6);
+            this.ResetTimeButton.Name = "ResetTimeButton";
+            this.ResetTimeButton.Size = new System.Drawing.Size(43, 20);
+            this.ResetTimeButton.TabIndex = 14;
+            this.ResetTimeButton.Text = "Reset";
+            this.ResetTimeButton.UseVisualStyleBackColor = true;
+            this.ResetTimeButton.Click += new System.EventHandler(this.ResetTimeButton_Click);
             // 
             // MainWindowView
             // 
@@ -302,5 +336,8 @@
         private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TextBox CombatTimeTextbox;
+        private System.Windows.Forms.Button AdvanceTimeButton;
+        private System.Windows.Forms.Button ResetTimeButton;
     }
 }
